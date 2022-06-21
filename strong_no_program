@@ -31,3 +31,53 @@ public class strongn {
         }
     }
 
+
+
+
+
+
+//print n number of strong number
+
+
+
+import java.util.Scanner;
+public class nstrongno {
+    static long fact(long a){
+        long f=1;
+        for(int i =1 ; i <=a;i++){
+            f*=i;
+        }
+        return f;
+    }
+    static boolean result(long b){
+        long sum=0;
+        long d=b;
+        while(b>0){
+            long c =b%10;
+            sum+=fact(c);
+            b/=10;
+        }
+        if  (sum == d){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        System.out.printf("enter  number of strong no : ");
+        int n = in.nextInt();
+        long s=1;
+        while(n>0){
+            boolean res = result(s);
+            if (res==true){
+                System.out.printf("%d ",s);
+                n-=1;
+            }
+            s+=1;
+        }
+    in.close();
+    }
+}
+
