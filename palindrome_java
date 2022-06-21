@@ -1,0 +1,25 @@
+//to determine wheather a number is palindrome or not---
+
+
+
+import java.util.Scanner;
+public class palindrom_no {
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        System.out.printf("Enter: ");
+        String n = input.nextLine();
+        String r="";
+        int size=n.length();
+        for(int i=size-1;i>=0;i--){
+            r+=n.charAt(i);
+        }
+        if(n.equals(r)){
+            System.out.println(n+"  is palindrome");
+        }
+        else{
+            System.out.println(n+"  is not palindrome");
+        }
+        input.close();
+    }
+    
+}
