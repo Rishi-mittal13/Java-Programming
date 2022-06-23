@@ -1,0 +1,32 @@
+//determine weather a number is armstrong number or not.
+
+import java.util.Scanner;
+public class armstrong {
+    static int result(int b,int p){
+        int sum =0;
+        while (b>0){
+            int a= b%10;
+            sum+=(Math.pow(a,p));
+            b/=10;
+        }
+        return sum;
+    }
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        int n =input.nextInt();
+        int m = 0;
+        int t = n;
+        while(t>0){
+            m+=1;
+            t/=10;
+        }
+        int R = result(n,m);
+        if (R==n){
+            System.out.println(n +" is a Armstrong number. ");
+        }
+        else{
+            System.out.println(n+" is not a Armstrong number. ");
+        }
+        input.close();
+    }
+}
