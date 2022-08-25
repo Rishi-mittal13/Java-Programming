@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class A_Even_Odds{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        long k = sc.nextLong();
+        long n = sc.nextLong();
+        long mid = k/2;
+        if(k%2==0){
+            if(n<=mid){
+                System.out.println((2*n)-1);
+            }
+            else{
+                System.out.println(2*(n-mid));
+            }
+        }
+        else{
+            if(n<=(mid+1)){
+                System.out.println((2*n)-1);
+            }
+            else{
+                System.out.println(2*(n-mid-1));
+            }
+        }
+
+        
+
+        sc.close();
+    }
+}
