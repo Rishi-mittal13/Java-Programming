@@ -1,0 +1,31 @@
+// 32B
+
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String s = sc.next();
+		char zero = '.';
+		char one = '-';
+		String res = "";
+		int len = s.length();
+		for(int i = 0 ; i<len ; i++){
+		    if(s.charAt(i) == one){
+		        if(s.charAt(i+1)==zero){
+		            res+="1";
+		            i++;
+		        }
+		        else{
+		            res+="2";
+		            i++;
+		        }
+		    }
+		    else{
+		        res+="0";
+		    }
+		}
+		System.out.println(res);
+		sc.close();
+	}
+}
