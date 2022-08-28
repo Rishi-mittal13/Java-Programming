@@ -1,0 +1,31 @@
+//271A - codeforces
+
+import java.util.Scanner;
+public class Main{
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    int t = sc.nextInt();
+	    boolean result = true;
+	    int year = t+1;
+	    while(result){
+	        int temp = year; 
+	        int a = temp%10;
+	        temp/=10;
+	        int b = temp%10;
+	        temp/=10;
+	        int c = temp%10;
+	        temp/=10;
+	        int d = temp;
+	        if((a==b) || (a==c) || (a==d) || (b==c) || (b==d) || (c==d)){
+	            year+=1;
+	        }
+	        else{
+	            result = false ; 
+	            System.out.println(year);
+	        }
+	    }
+	    sc.close();
+	    
+		
+	}
+}
