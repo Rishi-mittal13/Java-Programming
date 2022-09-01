@@ -1,0 +1,35 @@
+// A- Spell_Check. (codeforces)
+
+import java.util.Scanner;
+import java.util.ArrayList;
+public class A_Spell_Check{
+    public static void result(int len , String str){
+        ArrayList<Character> arr1 = new ArrayList<>();
+        if(str.length() == 5){
+            for(int i =0 ; i<5 ; i++){
+                arr1.add(str.charAt(i));
+            }
+            if((arr1.contains('T')) && (arr1.contains('i')) && (arr1.contains('m')) && (arr1.contains('u')) && (arr1.contains('r'))){
+                System.out.println("YES");                
+            }
+            else{
+                System.out.println("NO");
+            }
+        }
+        else{
+            System.out.println("NO");
+        }
+
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i =0 ; i<n ; i++){
+            int n1 = sc.nextInt();
+            String s = sc.next();
+            result(n1,s);
+        }
+
+        sc.close();
+    }
+}
