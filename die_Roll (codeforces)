@@ -1,0 +1,25 @@
+// 9A - codeforces
+
+import java.util.Scanner;
+public class A_Die_Roll{
+    public static int gcd(int a , int b){
+        int result  = Math.min(a,b);
+        while(result>0){
+        if ((a%result == 0) && (b%result==0)){
+            break;
+        }
+        result--;
+    }
+    return result;
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int yakko = sc.nextInt();
+        int wakko = sc.nextInt();
+            int max = Math.max(yakko,wakko);
+            int p = 7-max;
+            int d = gcd(p,6);
+            System.out.println((p/d)+"/"+(6/d));
+        sc.close();
+    }
+}
