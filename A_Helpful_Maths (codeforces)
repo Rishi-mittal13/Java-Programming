@@ -1,0 +1,30 @@
+//339A - codeforces
+
+import java.util.Scanner;
+import java.util.ArrayList;
+public class A_Helpful_Maths{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        String result = "";
+        int n = 0;
+        ArrayList<Character> arr = new ArrayList<>();
+        for(int i =0 ; i<(s.length()) ; i+=2){
+            n+=1;
+            arr.add(s.charAt(i));
+        }
+        arr.sort(null);
+        for(int i =0 ; i<n ; i++){
+            if(i==0){
+                result+=arr.get(i);
+            }
+            else{
+                result+="+";
+                result+=arr.get(i);
+            }
+        }
+        System.out.println(result);
+
+        sc.close();
+    }
+}
