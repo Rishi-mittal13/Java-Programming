@@ -1,0 +1,53 @@
+// Stack is inheritence class from vector its include some new methos .
+
+import java.util.Stack;
+public class Stack_Methods {
+    public static void main(String[] args){
+        Stack<Integer> st = new Stack<>();
+
+        // some previous method that we use in vector . for more visit vector or arraylist method.
+        // 1). add() - add element in stack. work as vector.
+        st.add(100);
+        st.add(2);
+        st.add(23);
+        //System.out.println(st);
+
+        // 2). remove() - remove element form specify index.
+        // st.remove(1);
+        // System.out.println(st);
+
+        // //st.sort() - sort the stack.
+        // st.sort(null);
+        // System.out.println(st);
+
+
+
+        // **  new five methods in that is used only in stack.
+
+        // 1). push() Method - To add an element to the top of the stack, we use the push() method.
+        st.push(5);
+        st.push(3);
+        st.push(6);
+        st.push(7);
+        //System.out.println(st);
+
+        // 2).pop() Method - To remove an element from the top of the stack, we use the pop() method it also return 
+        //that particular element. 
+        // st.pop(); st.pop(); st.pop();//remove last three element.
+        // System.out.println(st);
+
+        // 3). peek() Method - The peek() method returns an object from the top of the stack.
+        // System.out.println(st.peek());// it only return last elemnt mean top element from stack.
+        // System.out.println(st);
+
+        // 4). search() Method - To search an element in the stack,
+        // we use the search() method. It returns the position of the element from the top of the stack.
+        // System.out.println(st.search(100));//return 7. it search from top of the stack mean positon of last element is 1.
+
+        // 5). empty() Method - To check whether a stack is empty or not, we use the empty() method.
+        // boolean a = st.empty();
+        // System.out.println(a);
+
+
+    }
+}
