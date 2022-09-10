@@ -1,0 +1,18 @@
+// focus only in logic not programme
+
+
+class Solution {
+    public int reverse(int x) {
+        long result = 0 ;
+        int temp = x;
+        while(temp!=0){
+            int r = temp%10;
+            result = (result*10) + r;
+            temp/=10;
+        }
+        if((result> 2147483647) || (result< -2147483648)){
+            result = 0;
+        }
+        return (int)result;
+    }
+}
