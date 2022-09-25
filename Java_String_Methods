@@ -48,6 +48,75 @@ public class string_method {
         //13). firstString.equalsIgnoreCase(secondString) = return boolean in this its ignore case of string .
         System.out.println(name.equalsIgnoreCase("   MY NAME IS RISHI mittal  "));
         System.out.println(name.equalsIgnoreCase("   My Name Is Rishi Mittal  "));
+        
+        //methods of String.
+
+public class string_method {
+    public static void main(String[] args) {
+        String name = "   My Name Is Rishi Mittal  ";
+
+        // 1).length = gives length of string .
+        System.out.println(name.length());
+        
+        // 2).toLowerCase = convert all upper case character in to lower case .
+        System.out.println(name.toLowerCase());
+        
+        // 3).toUpperCase = convert all lower case character in to upper case.
+        System.out.println(name.toUpperCase());
+        
+        // 4).trim = it remove all leading and trailing spaces in original string.
+        System.out.println(name.trim());
+        
+        // 5).substring(int start , int end ) = it returns a substring of enter index.
+        System.out.println(name.substring(3)); //if no ending point given so it goes end of the string.
+        System.out.println(name.substring(5,8));
+
+        // 6). replace("oldChar","newChar") = it replace old character in to new char. and its also replace oldSubstring to new subString.
+        System.out.println(name.replace('m','e'));
+        System.out.println(name.replace("Ri","mi"));
+
+        // 7). endsWith() = it return boolean that a enter substring is end part of original string or not.
+        System.out.println(name.endsWith("al  "));
+        System.out.println(name.endsWith("fgy"));
+
+        // 8). startsWith() = it return boolean that a enter substring is starting part of original string or not.
+        System.out.println(name.startsWith("   My"));
+        System.out.println(name.startsWith("fbuhd"));
+
+        // 9). charAt(index) = it returns char of given index.
+        System.out.println(name.charAt(7));
+
+        // 10). indexOf('character') = it return the index of character in string not subtring
+        System.out.println(name.indexOf('M')); // gives first or from staring point  occuring index.
+
+        // 11). lastIndexOf('character') = Returns the last index of the specified character from the given string.
+        System.out.println(name.lastIndexOf('t'));
+
+        // 12). firstString.equals(secondString) = Returns boolean if both str equal so return true otherwise false.
+        System.out.println(name.equals("   My Name Is Rishi Mittal  "));
+        System.out.println(name.equals("rishi mittal"));
+
+        //13). firstString.equalsIgnoreCase(secondString) = return boolean in this its ignore case of string .
+        System.out.println(name.equalsIgnoreCase("   MY NAME IS RISHI mittal  "));
+        System.out.println(name.equalsIgnoreCase("   My Name Is Rishi Mittal  "));
+        
+        //14). str.split( String regex,int limit) - this method split the str String in to array with a particular regex 
+        // example and limit.  limit is maximum number of split of string;
+        String str = "MY NAME IS RISHI MITTAL" ;
+        String[] arr = str.split(" ");
+        for(int i = 0 ; i<arr.length ; i++){
+            System.out.println(arr[i]);
+        }
+
+
+    
+    
+        
+
+
+    }
+    
+}
 
 
     
