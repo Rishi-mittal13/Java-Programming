@@ -1,6 +1,7 @@
 //problem number :- 117
 
 
+// APPROACH - 1 
 class Solution {
     public int titleToNumber(String columnTitle) {
         int result = 0 ;
