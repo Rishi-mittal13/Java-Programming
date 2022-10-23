@@ -1,0 +1,61 @@
+// 121. Best Time to Buy and Sell Stock
+
+
+
+
+
+//BASIC APPROACH -- BRUTE FORCE -- TIME LIMIT EXCEED
+class Solution {
+    public int maxProfit(int[] prices) {
+        int max = 0 ;
+        int  n = prices.length;
+        for(int i = 0 ; i<n-1; i++){
+            for(int j =i+1; j<n ; j++){
+                max = Math.max(max,prices[j] - prices[i]);
+            }
+        }
+        return max;
+    }
+}
+
+
+
+
+
+
+//2ND APPROACH -- KADANE ALGORITHMS -- TIME COMPLEXITY -- O(n) and dynamic memory.
+class Solution {
+    public int maxProfit(int[] prices) {
+        int max =  0;
+        int max2 = 0;
+        int n = prices.length ;
+        int[] arr = new int[n];
+        for(int i = n-1; i>=0 ;i-- ){
+            max2 = Math.max(max2,prices[i]);
+            arr[i] = max2;
+        }
+        for(int i = 0 ; i<n ; i++){
+            max = Math.max(max,arr[i]-prices[i]);
+        }
+        return max;
+    }
+}
+
+
+
+
+
+
+
+//3RD APPROACH (BEST) -- TIME COMPLEXITY -- O(n) and constant memory.
+class Solution {
+    public int maxProfit(int[] prices) {
+        int max =  0;
+        int min = prices[0];
+        for(int i = 0 ; i<prices.length ; i++){
+            min = Math.min(min,prices[i]);
+            max = Math.max(max,prices[i]-min);
+        }
+        return max;
+    }
+}
