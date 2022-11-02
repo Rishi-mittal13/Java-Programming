@@ -1,0 +1,34 @@
+//1744A - codeforces .
+//1. basic appraoch O(n^2) time complexity;
+import java.util.Scanner;
+
+public class A_Number_Replacement{
+    public static String  result(int n ,int[] arr , String s){
+        for(int i = 0 ; i< n ; i++){
+            char a = s.charAt(i);
+            for(int j = i ; j<n ; j++){
+                if(arr[i]==arr[j]){
+                    if(!(a==s.charAt(j))){
+                        return "NO";
+                    }
+                }
+            }
+        }
+        return "YES";
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int testCase =  sc.nextInt();
+        for(int i  = 0 ; i<testCase ; i++){
+            int num = sc.nextInt();
+            int[] ar = new int[num];
+            for(int j = 0 ; j<num ; j++){
+                ar[j] = sc.nextInt();
+            }
+            String str = sc.next();
+            System.out.println(result(num,ar,str));
+        }
+        sc.close();
+    }
+
+}
