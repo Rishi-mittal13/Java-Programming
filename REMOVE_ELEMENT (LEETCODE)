@@ -1,0 +1,42 @@
+PROBLEM - 27 LEETCODE.
+
+//basic Aproach high time complexity O(N^2) but better memory usage.
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int max = 150;
+        int c  = 0;
+        for(int i = 0 ; i<nums.length  ; i++){
+            if(nums[i]==val){
+                nums[i] = 150;
+                c+=1;
+            }
+        }
+        Arrays.sort(nums);
+        return nums.length - c;
+    }
+}
+
+
+
+
+
+  //better complexity O(N) but memory usage is more .
+  class Solution {
+    public int removeElement(int[] nums, int val) {
+        int n = nums.length;
+        int[] arr = new int[n];
+        int  c = 0 ; 
+        for(int i  = 0 ; i<n ; i++){
+            if(nums[i]!=val){
+                arr[c] =  nums[i];
+                c++;
+            }
+        }
+        for(int i = 0; i <n ; i++){
+            nums[i] = arr[i];
+        }
+        return c;
+        
+    }
+}
+  
