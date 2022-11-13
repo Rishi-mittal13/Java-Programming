@@ -1,0 +1,39 @@
+// PROBLEM : - 228.
+
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+        ArrayList<String> arr = new ArrayList<>();
+        int n = nums.length;
+        if(n==0){
+            return arr;
+        }
+        if(n==1){
+            arr.add(nums[0]+"");
+            return arr;
+        }
+        int c = 0 ; 
+        int s  = nums[0];
+        for(int i = 0 ; i<n-1; i++){
+            if((nums[i+1]-1)==nums[i]){
+                c+=1 ;
+            }
+            else{
+                if(c>0){
+                    arr.add(s+"->"+(s+c));
+                }
+                else{
+                    arr.add(s+"");
+                }
+                s = nums[i+1];
+                c = 0;
+            }
+        }
+        if(nums[n-1] == nums[n-2]+1){
+            arr.add(s+"->"+nums[n-1]);
+        }
+        else{
+            arr.add(nums[n-1]+"");
+        }
+        return arr;
+    }
+}
