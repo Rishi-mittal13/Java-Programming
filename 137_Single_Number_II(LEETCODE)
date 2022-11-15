@@ -1,0 +1,41 @@
+//PROBLEM:- 137 -- LEETCODE.
+
+//APPROACH:-1 -- BY SORTING OF ARRAY USING "Arrays.sort() method" this method time complexity is O(nlogn) 
+//so for this solution time complexity is O(nlogn). 
+//easy approach.
+
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        int i = 1 ;
+        int n = nums.length;
+        while(i<n){
+            if(nums[i-1]!=nums[i]){
+                return nums[i-1];
+            }
+            else{
+                i+=3;
+            }
+        }
+        return nums[n-1];
+    }
+}
+
+
+
+
+
+
+
+//APPROACH:- 2 -- time complexity is O(n) . this solution is done by bit manupilation .
+//hard to understand but best approach.
+ int a=0;
+        int b=0;
+        for(int c:nums){
+            int ta=(~a&b&c)|(a&~b&~c);
+            b=(~a&~b&c)|(~a&b&~c);
+            a=ta;
+        }
+        //we need find the number that is 01,10 => 1, 00 => 0.
+        return a|b;
