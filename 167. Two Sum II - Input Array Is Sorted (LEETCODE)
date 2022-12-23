@@ -1,0 +1,29 @@
+//167. Two Sum II - Input Array Is Sorted
+
+//NOTE:- GIVEN APPROACH IS CALLED TWO POINTER APPROACH AND IT IS BEST QUESTION FOR TWO POINTER APPROACH.
+//IN TWO POINTER APPROACH WE APPROACH A ELEMENT FROM STAR INDEX AND LAST INDEX TO OBTAIN SPECIFIC PAIR.
+//THERE ARE ONE CONDITION IN TWO POINTER APPROACH IS THAT ARRAY SHOULD BE SORTED.
+
+
+
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int s = 0 ;
+        int e  = numbers.length -1;
+        int[] arr =  new int[2];
+        while(s<=e){
+            if((numbers[s] + numbers[e]) == target){
+                arr[0] = s+1;
+                arr[1] = e+1;
+                return arr;
+            }
+            else if((numbers[s]+numbers[e])<target){
+                s++;
+            }
+            else{
+                e--;
+            }
+        }
+        return arr;  
+    }
+}
