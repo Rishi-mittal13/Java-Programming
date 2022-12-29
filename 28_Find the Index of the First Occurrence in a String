@@ -1,4 +1,6 @@
 //problem -  28 - leetcode.
+
+//Note : -  effieciency of soultion is average around O(length of haystack)
 class Solution {
     public String subString(String s , int i , int f){
         StringBuffer str = new StringBuffer();
