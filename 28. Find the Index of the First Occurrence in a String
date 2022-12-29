@@ -1,0 +1,23 @@
+//problem -  28 - leetcode.
+class Solution {
+    public String subString(String s , int i , int f){
+        StringBuffer str = new StringBuffer();
+        for(int j = i ; j<f ; j++){
+            str.append(s.charAt(j));
+        }
+        return str.toString();
+    }
+    public int strStr(String haystack, String needle) {
+        int l1 = haystack.length();
+        int l2 = needle.length();
+        if(l2>l1){
+            return -1;
+        }
+        for(int i  = 0 ; i<=(l1-l2) ; i++){
+            if(needle.equals(subString(haystack , i , i+l2))){
+                return i ;
+            }
+        }
+        return -1;
+    }
+}
