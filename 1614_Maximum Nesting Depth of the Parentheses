@@ -1,0 +1,23 @@
+//problem 1614(LEETCODE).
+//Time-Complexity --> O(n)
+//best approach.
+
+
+class Solution {
+    public int maxDepth(String s) {
+        int max = 0 ;
+        int cont = 0;
+        for(int i = 0 ; i<s.length(); i++){
+            if(cont>max){
+                max = cont;
+            }
+            if(s.charAt(i) == '('){
+                cont++;
+            }
+            else if(s.charAt(i) == ')'){
+                cont--;
+            }
+        }
+        return max;
+    }
+}
