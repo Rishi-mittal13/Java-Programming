@@ -1,0 +1,37 @@
+//problem-2244 (LEETCODE).
+
+//time-complexity :- nlog(n) , without using hashmap.
+
+
+class Solution {
+    public int minimumRounds(int[] tasks) {
+        ArrayList<Integer> arr =  new ArrayList<Integer>();
+        int n =  tasks.length;
+        Arrays.sort(tasks);
+        int pres = tasks[0];
+        int count = 1;
+        for(int i = 1 ; i<n ; i++){
+            if(pres == tasks[i]){
+                count++;
+            }
+            else{
+                pres =  tasks[i];
+                arr.add(count);
+                count = 1 ;
+            }
+        }
+        arr.add(count);
+        int round  = 0 ;
+        for(Integer i : arr){
+            if(i==1){
+                return -1;
+            }
+            round+=(i/3);
+            if(i%3 != 0){
+                round++;
+            }
+        }
+        return round;
+
+    }
+}
