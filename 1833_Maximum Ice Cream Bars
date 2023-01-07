@@ -1,0 +1,20 @@
+//problem - 1833 (LEETCODE).
+//sorting approach.
+
+
+
+class Solution {
+    public int maxIceCream(int[] costs, int coins) {
+        Arrays.sort(costs);
+        int nc = 0 ;
+        int sum = 0 ;
+        if(coins<costs[0]){
+            return 0;
+        }
+        while((nc<costs.length) && ((coins-=costs[nc])>=0)){
+            nc++;
+        }
+        return nc;
+
+    }
+}
