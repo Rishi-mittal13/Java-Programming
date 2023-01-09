@@ -1,0 +1,25 @@
+//problem --> 1979 (LEETCODE).
+//TIME COMPLEXITY O(n) best appraoch.
+
+
+
+class Solution {
+    public int findGCD(int[] nums) {
+        int max = 0;
+        int min = 2000;
+        for(int i = 0 ; i<nums.length ; i++){
+            if(nums[i]<min){
+                min = nums[i];
+            }
+            if(nums[i]>max){
+                max = nums[i];
+            }
+        }
+
+        int i = min;
+        while((max%i != 0) || (min%i != 0)){
+            i--;
+        } 
+        return i;
+    }
+}
