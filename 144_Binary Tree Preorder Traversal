@@ -1,0 +1,36 @@
+//problem -- > 144
+//recursive approach. Time Complexity --> O(n).
+
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        ArrayList<Integer> rs = new ArrayList<Integer>();
+        traverse(root , rs);
+        return rs;
+    }
+    public static void traverse(TreeNode root , ArrayList<Integer> rs ){
+        if(root == null) return;
+        rs.add(root.val);
+        traverse(root.left,rs);
+        traverse(root.right,rs);
+    }
+}
+
