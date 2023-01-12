@@ -1,0 +1,24 @@
+problem-22(LEETCODE).
+//RECURSIVE METHOD TIME COMPLEXITY - O(N).
+
+
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> ls = new ArrayList<String>();
+        gp(ls,"",n,0,0);
+        return ls;
+    }
+    public static void gp(List<String> ls , String ans , int n , int c , int o){
+        if((c==n) && (o==n)){
+            ls.add(ans);
+            return;
+        }
+        if(o<n){
+            gp(ls,ans+"(",n,c,o+1);
+        }
+        if(c<o){
+            gp(ls,ans+")",n,c+1,o);
+        }
+    }
+}
