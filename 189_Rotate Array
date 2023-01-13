@@ -1,0 +1,23 @@
+//problem - 189(LEETCODE).
+//BASIC BRUTE FORCE APPROACH. TIME COMPLEXITY - O(N).
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        if(k>=n){
+            k = k%n;
+        }
+        int[] arr = new int[k];
+        int c = 0;
+        for(int i = (n-k) ; i<n ; i++){
+            arr[c] = nums[i];
+            c++;
+        }
+        for(int i =  (n-k-1) ; i>=0 ;i--){
+            nums[i+k] = nums[i];
+        }
+        for(int i =0 ; i<k ; i++){
+            nums[i] = arr[i];
+        }
+    }
+}
