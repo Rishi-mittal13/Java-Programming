@@ -1,0 +1,27 @@
+//problem--> 2169.
+//time complexity --> O(n).
+
+
+class Solution {
+    public int countOperations(int num1, int num2) {
+        int opr =0;
+        while((num1!=0) && (num2!=0)){
+            if(num1<num2){
+                num2 = num2-num1;
+                opr++;
+            }
+            else if(num1>num2){
+                num1 = num1-num2;
+                opr++;
+            }
+            else{
+                int a = num1 ;
+                num1 = num1-a;
+                num2 = num2-a;
+                opr++;
+            }
+        }
+        return opr;
+
+    }
+}
