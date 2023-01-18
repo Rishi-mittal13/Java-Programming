@@ -1,0 +1,15 @@
+//problem - 342 (LEETCODE).
+TIME - COMPLEXITY -->  O(1). --> CONSTANT TIME COMLEXITY .
+
+
+
+
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        double  a = (Math.log(n)/Math.log(4));
+        if(a==(int)a){
+            return true;
+        }
+        return false;
+    }
+}
