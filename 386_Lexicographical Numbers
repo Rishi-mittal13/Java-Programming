@@ -1,0 +1,29 @@
+problem--> 386(LEETCODE).
+//RECURSION APPROACH.
+
+
+
+
+class Solution {
+    static ArrayList<Integer> arr = new ArrayList<Integer>();
+    public List<Integer> lexicalOrder(int n) {
+        arr = new ArrayList<Integer>();
+        printLexico(0,n);
+        return arr;
+    }
+    public static void printLexico(int a , int n){
+        if(a>n){
+            return ;
+        }
+        if(a!=0){
+        arr.add(a);
+        }
+        int i = 0;
+        if(a==0){
+            i=1;
+        }
+        for(;i<=9;i++){
+            printLexico(a*10+i,n);
+        }
+    }
+}
