@@ -1,0 +1,20 @@
+//problem- 319 (LEETCODE)
+//TIME-COMPLEXITY --> O(ROOT(N)).
+class Solution {
+    public int bulbSwitch(int n) {
+        int i = 0;
+        while((i*i)<=n) i++;
+        return i-1;
+    }
+}
+
+
+
+
+//BETTER.
+//TIME-COMPLEXITY --> O(1)
+class Solution {
+    public int bulbSwitch(int n) {
+        return (int)(Math.sqrt(n));
+    }
+}
