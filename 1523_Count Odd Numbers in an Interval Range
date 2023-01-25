@@ -1,0 +1,14 @@
+//time - complexity --> O(1).
+
+class Solution {
+    public int countOdds(int low, int high) {
+        int n = 0;
+        if((low%2==1) || (high%2==1)){
+            n = (high-low)/2 +1;
+        }
+        else{
+            n = (high-low)/2;
+        }
+        return n;
+    }
+}
