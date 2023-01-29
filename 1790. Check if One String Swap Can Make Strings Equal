@@ -1,0 +1,27 @@
+//PROBLEM-1790(LEETCODE).
+//TIME-COMPLEXITY --> O(N).
+
+
+
+class Solution {
+    public boolean areAlmostEqual(String s1, String s2) {
+        int n1 = s1.length(),n2=s2.length();
+        //IF BOTH STRING LENGTH DIFFER THAN RETURN FALSE.
+        if(n1!=n2) return false;
+        //IF MORE THAN TWO CHARACTER DIFFFER IN STRING THAN RETURN 
+        //RETURN FALSE.
+        int m = 0;
+        int[] arr = new int[2];
+        for(int i = 0 ; i<n1 ; i++){
+            if(s1.charAt(i)!=s2.charAt(i)){    
+            m++;
+            if(m>2) return false;
+            arr[m-1] = i;
+            }      
+        }
+        if(m==0) return true;
+        if(m==1) return false;
+        if((s1.charAt(arr[1]) == s2.charAt(arr[0])) && s1.charAt(arr[0]) == s2.charAt(arr[1])) return true;
+        return false;
+    }
+}
