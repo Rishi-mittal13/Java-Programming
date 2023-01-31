@@ -1,0 +1,25 @@
+//problem-202(LEETCODE).
+//
+
+
+
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet<Integer> hs = new HashSet<Integer>();
+        while(n!=1){
+            n = numb(n);
+            if(hs.contains(n)) return false;
+            else hs.add(n);
+        }
+        return true;
+    }
+    public static int numb(int a){
+        int k = 0;
+        while(a>0){
+            k+=((a%10)*(a%10));
+            a/=10;
+        }
+        return k;
+    }
+
+}
