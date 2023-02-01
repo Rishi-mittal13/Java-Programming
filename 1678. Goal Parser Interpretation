@@ -1,0 +1,26 @@
+//problem-1678
+//Time-complexity --> O(n).
+
+
+
+
+class Solution {
+    public String interpret(String command) {
+        StringBuffer str = new StringBuffer();
+        int n = command.length();
+        int i =0;
+        while(i<n){
+            if(command.charAt(i)=='G'){
+                str.append('G');
+                i++;}
+            else if(((i+2)<=n) && command.substring(i,i+2).equals("()")){
+                str.append("o");
+                i+=2;}
+            else{
+                str.append("al");
+                i+=4;
+            }
+        }
+        return str.toString();
+    }
+}
