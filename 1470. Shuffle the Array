@@ -1,0 +1,19 @@
+//problem-1470(LEETCODE).
+//Time-complexity - o(2n).
+//Space complexity = o(2n)
+
+
+
+
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int[] arr = new int[2*n];
+        int c = 0;
+        int d =0;
+        for(int i = 0 ; i<(2*n) ; i++){
+            if(i%2==0) arr[i]=nums[d++];
+            else arr[i] = nums[n+(c++)];
+        }
+        return arr;
+    }
+}
