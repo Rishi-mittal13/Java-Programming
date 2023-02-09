@@ -1,0 +1,21 @@
+//problem-504(LEETCODE).
+//TIME-COMPLEXITY - O(N)
+
+class Solution {
+    public String convertToBase7(int num) {
+        StringBuffer str = new StringBuffer();
+        if(num==0) return "0";
+        boolean temp = false;
+        if(num<0){
+            num = -num;
+            temp = true;
+        }
+        while(num!=0){
+            str.append(num%7);
+            num/=7;
+        }
+        if(temp) str.append("-");
+        str.reverse();
+        return str.toString();
+    }
+}
