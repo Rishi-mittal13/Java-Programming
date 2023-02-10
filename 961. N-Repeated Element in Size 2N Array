@@ -1,0 +1,17 @@
+//problem - 961(LEETCODE).
+//TIME-COMLEXITY - O(N).
+
+
+
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        int n = nums.length,max = 0 ;
+        int[] arr = new int[10002];
+        for(int i = 0 ; i<n ; i++){
+            arr[nums[i]]++;
+            if(nums[i]>max) max = nums[i];
+        }    
+        for(int i = 0 ; i<=max; i++) if(arr[i]==(n/2)) return i;
+        return n;
+    }
+}
