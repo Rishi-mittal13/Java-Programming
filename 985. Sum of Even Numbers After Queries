@@ -1,0 +1,26 @@
+//PROBLEM-985(LETECODE).
+//TIME-COMPLEXITY O(N).
+//SPACE - COMLEXITY - O(N).
+
+
+
+
+
+class Solution {
+    public int[] sumEvenAfterQueries(int[] nums, int[][] queries) {
+        int n = nums.length , q = queries.length,sum=0;
+        int[] ans = new int[q];
+        for(int  i : nums){
+            if(i%2==0) sum+=i;
+        }
+        for(int i = 0 ; i<q ; i++){
+            int rem = nums[queries[i][1]];
+            if((rem%2==0)) sum-=rem;
+            int val = (rem+queries[i][0]);
+            nums[queries[i][1]]=val;
+            if(val%2==0) sum+=val;
+            ans[i] = sum;
+        }
+        return ans;
+    }
+}
