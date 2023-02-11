@@ -1,0 +1,17 @@
+//PROBLEM-1588(LEETCODE).
+//TIME - COMPLEXITY ( N^3).
+//BRUTE - FORCE APPROACH.
+
+
+class Solution {
+    public int sumOddLengthSubarrays(int[] arr) {
+        int win=1,ans=0;
+        while(win<=arr.length){
+            for(int i=0;i<=arr.length-win;i++){
+                for(int j=i;j<i+win;j++) ans+=arr[j];
+            }
+            win+=2;
+        }
+        return ans;
+    }
+}
