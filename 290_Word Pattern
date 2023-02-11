@@ -1,6 +1,6 @@
 //problem-290(LEETCODE).
 
-
+//APPROACH 1- > by using hashmap .
 class Solution {
     public boolean wordPattern(String pattern, String s) {
         String [] arr = s.split(" ");
@@ -16,3 +16,30 @@ class Solution {
         return true;
     }
 }
+
+
+
+
+//APPROACH -2 -> without using hashmap (bruteforce).
+class Solution {
+    public boolean wordPattern(String pattern, String s) {
+        String[] str = s.split(" ");
+        int p = pattern.length() , s1 = str.length;
+        String[] arr = new String[26];
+        if(p!=s1) return false;
+        for(int i = 0 ; i<p-1; i++){
+            int c1 = (int)pattern.charAt(i)-97;
+            for(int j = i+1 ; j<p ; j++){
+            int c2 = (int)pattern.charAt(j)-97;
+            if(c1!=c2){if(str[i].equals(str[j])) return false;}
+        }}
+        for(int i = 0 ; i <p ; i++){
+            int c = (int)pattern.charAt(i)-97;
+            if(arr[c]==null) arr[c] = str[i];
+            else{if(!arr[c].equals(str[i])) return false;}
+        }
+        return true;
+    }
+}
+
+
