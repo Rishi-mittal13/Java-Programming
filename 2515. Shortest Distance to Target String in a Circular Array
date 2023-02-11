@@ -1,0 +1,24 @@
+//problem - 2515 (LEETCODE).
+
+
+
+class Solution {
+    public int closetTarget(String[] words, String target, int startIndex) {
+        int min = 1000;
+        int j = startIndex, k = startIndex, i = 0,n=words.length;
+        if(words[startIndex].equals(target)) return 0;
+        while(i<n){
+            i++;
+            j = (j+1)%n;
+            k = (k-1+n)%n;
+            if(words[j].equals(target)){
+                if(i<min) min = i;
+            }
+            if(words[k].equals(target)){
+                if(i<min) min = i;
+            }
+        }
+        if(min == 1000 ) return -1;
+        return min;
+    }
+}
