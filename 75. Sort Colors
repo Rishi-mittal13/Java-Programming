@@ -1,0 +1,22 @@
+//problem-75(leetcode).
+//time-complexity - O(n) , space-complexity - O(constant).
+
+
+
+
+
+class Solution {
+    public void sortColors(int[] nums) {
+        int a0 = 0 , a1 = 0 , a2 = 0;
+        for(int i : nums){
+            if(i==0) a0++;
+            if((i==1) || (i==0)) a1++;
+            a2++;
+        }
+        for(int i = 0 ;i<nums.length;i++){
+            if(i<a0) nums[i] = 0;
+            else if(i<a1) nums[i] = 1;
+            else nums[i] = 2;
+        }
+    }
+}
