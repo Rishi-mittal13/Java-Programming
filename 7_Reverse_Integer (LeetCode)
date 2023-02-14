@@ -1,5 +1,5 @@
-// focus only in logic not programme
-
+//problem-7 (leetcode).
+//time-complexity - o(n).
 
 class Solution {
     public int reverse(int x) {
