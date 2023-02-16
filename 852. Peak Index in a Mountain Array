@@ -1,0 +1,34 @@
+//problem - 852 (LEETCODE).
+
+
+
+//BASIC - APPROACH : -
+//TIME-COMPLEXITY - O(N).
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        for(int i = 0 ; i<arr.length-1 ; i++){
+            if(arr[i]>arr[i+1]) return i;
+        }
+        return -1;
+    }
+}
+
+
+
+
+
+//binary - search approach --> o(logn).
+class Solution {
+    public int peakIndexInMountainArray(int[] A) {
+        int start = 0, end = A.length - 1;
+        while (start < end) {
+            int mid = (start+end)/2;
+            if (A[mid] < A[mid + 1]) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+        return start;
+    }
+}
