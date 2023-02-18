@@ -1,0 +1,25 @@
+//problem - 73(leetcode).
+//time - complexity --> o(n*m)
+
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int[] arr = new int[201];
+        int[] arc = new int[201];
+        for(int i = 0 ; i<matrix.length ; i++){
+            for(int j = 0 ; j<matrix[0].length; j++){
+                if(matrix[i][j]==0){
+                    arr[i]++;
+                    arc[j]++;
+                }
+            }
+        }
+        for(int i = 0 ; i<matrix.length ; i++){
+            for(int j = 0 ; j<matrix[0].length; j++){
+                if(arr[i]>0 || arc[j]>0){
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
+}
