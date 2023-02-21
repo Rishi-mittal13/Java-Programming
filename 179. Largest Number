@@ -1,0 +1,43 @@
+//PROBLEM-179(LEETCODE).
+
+//APPROACH-1 :  TIME-COMPLEXITY --> O(LENGTH OF STRING * N^2).
+class Solution {
+    public String largestNumber(int[] nums) {
+        int n = nums.length,sum=0;
+        for(int i : nums) sum+=i;
+        if(sum==0) return "0";
+        String[] str = new String[n];
+        for(int i = 0 ; i<n ; i++) str[i] = nums[i]+"";
+        for(int i = 0 ; i<n-1 ; i++){
+            for(int j = i+1 ; j<n ; j++ ){
+                String ij = str[i]+str[j];
+                String ji = str[j]+str[i];
+                int a = ij.compareTo(ji);
+                if(a<0){
+                    String temp = str[j];
+                    str[j] = str[i];
+                    str[i] = temp;
+                }
+            }
+        }
+        String s = "";
+        for(String i : str) s+=i;
+        return s;
+    }
+}
+
+
+
+//APPROACH -2 : OPTIMIZE APPROACH --> TIME-COMPLEXITY -> O(length of string * nlogn).
+class Solution {
+    public String largestNumber(int[] nums) {
+        int n = nums.length;
+        String[] str = new String[n];
+        for(int i = 0 ; i<n ; i++) str[i] = nums[i]+"";
+        Arrays.sort(str, (a,b) -> (b + a).compareTo(a + b));
+        if(str[0].equals("0")) return "0";
+        StringBuffer s = new StringBuffer();
+        for(String i : str) s.append(i);
+        return s.toString();
+    }
+}
