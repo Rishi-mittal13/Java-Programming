@@ -1,0 +1,16 @@
+//problem-540(LEETCODE).
+
+//1ST BASIC APPROACH TIME-COMPLEXITY --> O(N)
+
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        int i = 0 , n = nums.length;
+        while(i<(n-1)){
+            if(nums[i]==nums[i+1]) i+=2;
+            else return nums[i];
+        }
+        return nums[n-1];
+    }
+}
+
+//2ND APPROACH TIME-COMPLEXITY --> O(LOGN).
