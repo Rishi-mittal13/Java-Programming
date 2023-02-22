@@ -1,0 +1,22 @@
+//problem-334 (leetcode)
+//best approach . time-complexity- o(n) , space - complexity --> o(1)
+
+
+class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        int i  =  Integer.MAX_VALUE;
+        int j = Integer.MAX_VALUE;
+        for(int a : nums){
+            if(a<=i){
+                i = a;
+            }
+            else if(a<=j){
+                j = a;
+            }
+            else{
+                return true;
+            }
+        }
+        return false;
+    }
+}
