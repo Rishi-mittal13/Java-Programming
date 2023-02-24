@@ -1,0 +1,18 @@
+//problem-2177(leetcode).
+//Mathmatics approach ---> T.C ==> O(n).
+
+
+
+class Solution {
+    public long[] sumOfThree(long num) {
+        long[] arr = {};
+        long a = (num-3),b=0;
+        if(a%3!=0) return arr;
+        else{
+            arr = new long[3];
+            b = a/3;
+            arr[0] = b;arr[1] = b+1;arr[2] = b+2;
+        }
+        return arr;
+    }
+}
