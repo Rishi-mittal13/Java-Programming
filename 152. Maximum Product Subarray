@@ -1,0 +1,19 @@
+//problem-152(LEETCODE).
+//T.C --> O(N) , S.C --> O(1), KADEN'S ALGORITHMS
+
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int maxL = Integer.MIN_VALUE,maxR = Integer.MIN_VALUE,mulL=1,mulR=1;
+        int n = nums.length;
+        for(int i = 0 ;i<n ; i++){
+            mulL*=nums[i];mulR*=nums[n-i-1];
+            if(mulL>maxL) maxL = mulL;
+            if(mulL==0) mulL = 1;
+            if(mulR>maxR) maxR = mulR;
+            if(mulR==0) mulR = 1;
+        }
+        if(maxL>maxR) return maxL;
+        return maxR;
+    }
+}
