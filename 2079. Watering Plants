@@ -1,0 +1,21 @@
+//problem-2079(leetcode).
+//time-complexity --> o(n)
+
+
+class Solution {
+    public int wateringPlants(int[] plants, int capacity) {
+        int steps = 0 , count = 0 , fill = capacity;
+        while(count<plants.length){
+            if(capacity<plants[count]){
+                capacity = fill;
+                steps+=(2*count);
+            }
+            else{
+                capacity-=plants[count];
+                count++;
+                steps++;
+            }
+        }
+        return steps;
+    }
+}
