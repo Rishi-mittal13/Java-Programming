@@ -1,0 +1,14 @@
+//problem-no :- 1492(leetcode)
+//time - complexity - o(n);
+
+class Solution {
+    public int kthFactor(int n, int k) {
+        int s = 1;
+        while(s<=n){
+            if(n%s==0) k--;
+            if(k==0) return s;
+            s++;
+        }
+        return -1;
+    }
+}
