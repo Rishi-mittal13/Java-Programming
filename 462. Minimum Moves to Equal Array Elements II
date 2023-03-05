@@ -1,0 +1,17 @@
+//problem - 462(leetcode).
+
+
+//brute - force , time-complexity - O(n)
+class Solution {
+    public int minMoves2(int[] nums) {
+        int min = Integer.MAX_VALUE , n = nums.length;
+        for(int i = 0 ; i<n ; i++){
+            long sum = 0 ;
+            for(int j = 0 ; j<n ; j++){
+                sum += (Math.abs(nums[i]-nums[j]));
+            }
+            if(sum<min) min = (int)sum;
+        }
+        return min;
+    }
+}
