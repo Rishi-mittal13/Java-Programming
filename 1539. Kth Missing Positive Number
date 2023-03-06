@@ -1,0 +1,16 @@
+//problem-1539(leetcode).
+//time-complexity -> o(n)
+
+
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+        int a = 1 , i = 0 , n = arr.length;
+        while(k!=0){
+            if(i>(n-1)) k--;
+            else if(a<arr[i]) k--;
+            else i++;
+            a++;
+        }
+        return a-1;
+    }
+}
