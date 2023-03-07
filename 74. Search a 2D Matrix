@@ -1,0 +1,47 @@
+//problem-74(leetcode).
+
+
+//1st Approach => Time-comlexity = O(n*m)
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for(int i = 0 ;  i<matrix.length ; i++){
+            for(int j = 0 ; j<matrix[0].length ; j++){
+                if(matrix[i][j]==target) return true;
+            }
+        }
+        return false;
+        
+    }
+}
+
+
+
+//2nd approach =>Time-complexity O(n) + log(m).
+class Solution {
+    public static boolean binarySearch(int[] arr , int t){
+        int s = 0 , e  = arr.length-1 , mid = 0;
+        while(s<=e){
+            mid =  (s+e)/2;
+            if(arr[mid]==t) return true;
+            else if(arr[mid]>t) e = mid -1;
+            else s = mid+1;
+        }
+        return false;
+    }
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int r = -1 , c = matrix[0].length;
+        for(int i = 0 ; i<matrix.length ; i++){
+            if( matrix[i][0]<=target && matrix[i][c-1]>=target){
+                r = i;
+                break;
+            }
+        }
+        if(r==-1) return false;
+        return binarySearch(matrix[r],target);
+    }
+}
+
+
+
+//3rd Approach time-complexity = O(log(n*M))
+
