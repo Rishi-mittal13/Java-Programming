@@ -1,0 +1,18 @@
+//problem-476(leetcode).
+//time-complexity -> O(logn).
+
+
+class Solution {
+    public int findComplement(int num) {
+        int ans = 0,i=0;
+        while(num>0){
+            if(num%2==0) ans+=(int)Math.pow(2,i);
+            num/=2;
+            i++;
+        }
+        return ans;
+
+    }
+}
+
+note:- This question is the same as 1009
