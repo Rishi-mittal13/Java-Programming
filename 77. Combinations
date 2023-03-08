@@ -1,0 +1,46 @@
+//problem-77(leetcode).
+
+//BackTracking Approch 1 
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+    List<List<Integer>> res = new ArrayList<>();
+    List<Integer> ans = new ArrayList<>();
+    combinations(1 , n , k , ans , res);
+    return res;
+    }
+    public static void combinations(int start , int n , int k , List<Integer> ans , List<List<Integer>> res){
+        if(k==0){
+            res.add(new ArrayList<>(ans));
+            return ;
+        }
+        for(int i = start ; i<=n ; i++){
+            ans.add(i);
+            combinations(i+1,n, k -1 , ans , res);
+            ans.remove(ans.size()-1);
+        }
+    }
+}
+
+
+
+
+//Approach improves time-complexity => as we know if we form k size list so, last k-1 element is not required so, we eleminate them .
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+    List<List<Integer>> res = new ArrayList<>();
+    List<Integer> ans = new ArrayList<>();
+    combinations(1 , n , k , ans , res);
+    return res;
+    }
+    public static void combinations(int start , int n , int k , List<Integer> ans , List<List<Integer>> res){
+        if(k==0){
+            res.add(new ArrayList<>(ans));
+            return ;
+        }
+        for(int i = start ; i<=n ; i++){
+            ans.add(i);
+            combinations(i+1,n, k -1 , ans , res);
+            ans.remove(ans.size()-1);
+        }
+    }
+}
