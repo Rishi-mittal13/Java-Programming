@@ -1,0 +1,27 @@
+//problem-791(LEETCODE).
+
+//TIME-COMPLEXITY -> O(max(len(order),len(s),26));
+
+class Solution {
+    public String customSortString(String order, String s) {
+        int o = order.length() , n = s.length() ;
+        StringBuffer ans = new StringBuffer();
+        int[] priority = new int[o];
+        int[] str = new int[26];
+        for(int i  = 0 ; i <o ; i++) priority[i] = (int)order.charAt(i)-97;
+        for(int i = 0  ; i<n ; i++) str[s.charAt(i)-97]++;
+        for(int i : priority){
+            while(str[i]>0){
+                ans.append((char)(97+i));
+                str[i]--;
+            }
+        }
+        for(int i = 0 ; i<26 ; i++){
+            while(str[i]>0){
+                ans.append((char)(97+i));
+                str[i]--;
+            }
+        }
+        return ans.toString();
+    }
+}
