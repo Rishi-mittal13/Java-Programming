@@ -1,0 +1,24 @@
+//problem-1122(leetcode).
+//time-complexity - O(1001) , space-complexity => O(1001);
+
+
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        int a1 = arr1.length , a2 = arr2.length , count = 0 ;
+        int[] ar1 =  new int[1001]; 
+        for(int i :arr1) ar1[i]++;
+        for(int i : arr2){
+            while(ar1[i]>0){
+                arr1[count] = i;
+                count++;ar1[i]--;
+            }
+        } 
+        for(int i = 0 ; i<1001; i++){
+            while(ar1[i]>0){
+                arr1[count] = i;
+                count++;ar1[i]--;
+            }
+        }
+        return arr1;
+    }
+}
