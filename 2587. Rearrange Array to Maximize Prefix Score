@@ -1,0 +1,18 @@
+//problem-2587(leetcode).
+
+
+//Time-comlexity -> O(nlogn) , Space-Complexity -> O(1).
+
+
+class Solution {
+    public int maxScore(int[] nums) {
+        int count = 0 ;
+        long prefixSum = 0;
+        Arrays.sort(nums);
+        for(int i = nums.length-1 ; i>=0 ; i--){
+            prefixSum+=nums[i];
+            if(prefixSum>0) count++;
+        }
+        return count;
+    }
+}
