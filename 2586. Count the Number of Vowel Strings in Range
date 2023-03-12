@@ -1,0 +1,16 @@
+//problem-2586(leetcode).
+
+
+//Time-complexity -> O(words.length) ,  space-complexity => O(27).
+class Solution {
+    public int vowelStrings(String[] words, int left, int right) {
+        int count = 0 ;
+        int[] arr = new int[27];
+        arr['a'-'a']++;arr['e'-'a']++;arr['i'-'a']++;arr['o'-'a']++;arr['u'-'a']++;
+        for(int i = left ; i<=right ; i++){
+            int n = words[i].length()-1;
+            if(arr[words[i].charAt(0)-'a']>0 && (arr[words[i].charAt(n)-'a'])>0) count++;
+        }
+        return count;              
+    }
+}
