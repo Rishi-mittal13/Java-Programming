@@ -1,0 +1,19 @@
+//problem-2186(leetcode).
+
+//time-comlexity => O(max(len(s),len(t)).
+class Solution {
+    public int minSteps(String s, String t) {
+        int total  =0 , sum  =0; 
+        int[] ar = new int[26];
+        for(int i = 0 ; i<s.length() ; i++){
+            ar[s.charAt(i)-'a']++; 
+            sum++;
+        }
+        for(int i = 0 ; i<t.length() ; i++){
+            char c = t.charAt(i);
+            if(ar[c-'a']==0){total++;}
+            else{ar[c-'a']--;sum--;}
+        }
+        return total+sum;
+    }
+}
