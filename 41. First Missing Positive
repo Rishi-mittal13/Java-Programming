@@ -1,0 +1,56 @@
+//problem-41 (LEETCODE).
+
+
+APPROACH-1 - BRUTE-FORCE T.C -> O(nlogn) , S.C -> O(1)
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        int start = 1 ;
+        Arrays.sort(nums);
+        for(int i : nums){
+            if(i==start) start++;
+            else if(i>start) return start;
+        }
+        return start;
+    }
+}
+
+
+
+APPROACH-2 - T.C -> O(N) , S.C -> O(100001).
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        int max = 0;
+        int[] arr = new int[100001];
+        for(int i : nums){
+            if(i>0 && i<100001) arr[i]++;
+            if(i>max && i<100001) max = i;
+        }
+        for(int i = 1 ; i<=max ; i++){
+            if(arr[i]==0) return i ;
+        }
+        return max+1;
+    }
+}
+
+
+
+//APPROACH-3 , T.C - O(N) , S.C -> O(1) (BEST APPROACH)
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        int n = nums.length,j = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > 0) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                j++;
+            }
+        }
+        for (int i = 0; i < j; i++) {
+            int idx = Math.abs(nums[i]) - 1;
+            if (idx < j && nums[idx] > 0) nums[idx] = -nums[idx];
+        }
+        for (int i = 0; i < j; i++) if (nums[i] > 0) return i + 1;
+        return j + 1;
+    }
+}
