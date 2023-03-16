@@ -1,0 +1,37 @@
+//problem-1381 (LEETCODE)
+
+
+
+class CustomStack {
+    int[] arr ;
+    int tos = -1 ;
+    int max  = 0 ;
+    public CustomStack(int maxSize) {
+        arr = new int[maxSize];
+        max = maxSize;
+    }
+    public void push(int x) {
+        if(tos>=max-1) return ;
+        tos++;
+        arr[tos] = x;
+    }
+    public int pop() {
+        if(tos<0) return -1;
+        int a = arr[tos];
+        tos--;
+        return a;
+    }
+    public void increment(int k, int val) {
+    for(int i = 0 ; (i<=tos && i<k) ; i++){
+        arr[i] = arr[i] + val;
+    }    
+    }
+}
+
+/**
+ * Your CustomStack object will be instantiated and called as such:
+ * CustomStack obj = new CustomStack(maxSize);
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * obj.increment(k,val);
+ */
