@@ -1,0 +1,27 @@
+//problem-921(leetcode)
+
+//stack approach.
+
+class Solution {
+    public int minAddToMakeValid(String s) {
+        int moves = 0 ;
+        Stack<Character> st = new Stack<>();
+        for(int i = 0 ; i<s.length() ; i++){
+            char c = s.charAt(i);
+            if(st.isEmpty()){
+                if(c==')') moves++;
+                else st.push(')');
+            }
+            else{
+                if(st.peek()!=c){
+                    if(c==')') st.push('(');
+                    else st.push(')');
+                }
+                else{
+                    st.pop();
+                } 
+            }
+        }
+        return moves+st.size();
+    }
+}
