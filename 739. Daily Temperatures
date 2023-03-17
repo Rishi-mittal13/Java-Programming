@@ -1,0 +1,44 @@
+//problem-739(LEETCODE).
+
+//BRUTE - FORCE (TIME - LIMIT EXCEED IN LEETCODE)
+ int n = temperatures.length ; 
+        int[] arr = new int[n];
+        for(int i = n-1 ; i>=0 ; i--){
+            for(int j = i ;j<n ; j++ ){
+                if(temperatures[j]>temperatures[i]){
+                    arr[i] = j-i;
+                    break;
+                }
+            }
+        }
+        return arr;
+     }   
+ }
+ 
+ 
+ 
+ //BY STACK --> 
+ class Solution {
+    public int[] dailyTemperatures(int[] temperatures) {
+        int n = temperatures.length;
+        int[] arr = new int[n];
+        Stack<Integer> st = new Stack<>();
+        for(int i = n-1 ; i>=0 ; i-- ){
+            boolean flag = true;
+            while(flag){
+                if(st.isEmpty()){
+                st.push(i);
+                arr[i] = 0;
+                flag = false;
+                }
+                else if(temperatures[st.peek()]>temperatures[i]){
+                    arr[i] =  st.peek()-i;
+                    st.push(i);
+                    flag = false;
+                }
+                else st.pop();
+            }
+        }
+        return arr;
+    }
+}
