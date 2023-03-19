@@ -1,0 +1,21 @@
+//problem-350(leetcode).
+
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        List<Integer> lst = new ArrayList<>();
+        int[] arr = new int[1001];
+        for(int i : nums1) arr[i]++;
+        for(int i : nums2){
+            if(arr[i]>0){
+                lst.add(i);
+                arr[i]--;
+            }
+        }
+        int n = lst.size();
+        int[] ar = new int[n];
+        for(int i = 0 ; i<n ; i++){
+            ar[i] = lst.get(i);
+        }
+        return ar;
+    }
+}
