@@ -1,0 +1,16 @@
+//problem-2595 (leetcode).
+
+class Solution {
+    public int[] evenOddBit(int n) {
+        int even = 0 , odd = 0 , count = 0 ;
+        while(n>0){
+            int bit = n%2;
+            if(count%2==0 && bit ==1) even++;
+            else if(count%2==1 && bit == 1) odd++;
+            count++;
+            n/=2;
+        }
+        int[] arr = {even,odd};
+        return arr;
+    }
+}
