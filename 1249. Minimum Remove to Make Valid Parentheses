@@ -1,0 +1,30 @@
+//problem-1249(leetcode).
+
+
+//Approach ->  stack
+class Solution {
+    public String minRemoveToMakeValid(String s) {
+        int ind = 0 ;
+        StringBuffer str = new StringBuffer();
+        Stack<Integer> st = new Stack<>();
+        for(int i = 0 ; i<s.length() ; i++){
+            if(s.charAt(i)=='('){
+                st.push(i);
+            }
+            else if(!st.isEmpty() && s.charAt(i)==')' && s.charAt(st.peek())=='('){
+                st.pop();
+            }
+            else if(s.charAt(i)==')') st.push(i);
+        }
+        st.push(-1);
+        for(int i = 0 ; i<s.length() ; i++){
+            if(i==st.get(ind)){
+                ind++;continue;
+            }
+            else{
+                str.append(s.charAt(i));
+            }
+        }
+        return str.toString();
+    }
+}
