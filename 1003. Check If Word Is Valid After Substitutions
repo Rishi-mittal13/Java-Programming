@@ -1,0 +1,24 @@
+//problem-1003(leetcode).
+
+//Approach -> stack.
+
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> st = new Stack<>();
+        for(int i = 0;  i < s.length() ; i++){
+            char ch = s.charAt(i);
+            if(ch=='a') st.push('a');
+            else if(st.isEmpty()) return false;
+            else if(ch == 'b'){
+                if(st.peek()=='a') st.push('b');
+                else return false;
+            }     
+            else if(ch=='c' && !st.isEmpty()){
+                if(st.pop()=='b' && st.pop()=='a') continue;
+                else return false;
+            }
+        }
+       if(st.isEmpty()) return true;
+       return false;
+    }
+}
