@@ -1,0 +1,21 @@
+//problem-605(leetcode).
+//time-complexity -> O(n)
+
+
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+      int count = 0;
+      boolean b = true;
+      for(int i  = 0 ; i<flowerbed.length-1 ; i++){
+          if(flowerbed[i]==1) b = false;
+          else if (flowerbed[i]==0 && !b) b = true; 
+          else if(flowerbed[i] ==0 && b && (flowerbed[i+1] !=1)){
+              b = false;
+              count++;
+          }
+      }  
+      if(flowerbed[flowerbed.length-1]==0 && b) count++;
+      if(count>=n) return true;
+      return false;
+    }
+}
