@@ -1,0 +1,25 @@
+//problem-1414(leetcode).
+
+//time-comlexity -> O(n).
+
+
+
+
+class Solution {
+    public int findMinFibonacciNumbers(int k) {
+        int[] arr = new int[45];
+        int a = 0 , b = 1 , c = 0 , ind = 0;
+        while(c<=k){
+            a = b ; 
+            b = c; 
+            c = a+b;
+            arr[ind++] = c;
+        }
+        int count = 0 , temp =  k ;
+        for(int i = ind-1 ; i>=0 ; i--){
+            if(arr[i]<=temp){temp-=arr[i];count++;}
+            if(k==0) break;
+        }
+        return count ; 
+    }
+}
