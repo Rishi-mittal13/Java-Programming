@@ -1,0 +1,18 @@
+//problem->2348(leetcode).
+
+//Time-complexity -> O(n) , space-complexity -> O(1).
+
+class Solution {
+    public long zeroFilledSubarray(int[] nums) {
+        long n = 0 , total = 0;
+        for(int i : nums){
+            if(i==0) n++;
+            if(i!=0 && n>0){
+                total+= (n*(n+1))/2;
+                n =0;
+            }
+        }
+        total+= (n*(n+1))/2; 
+        return total;
+    }
+}
