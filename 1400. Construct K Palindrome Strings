@@ -1,0 +1,22 @@
+//problem-1400(leetcode).
+
+//time-complexity -> O(n).
+
+class Solution {
+    public boolean canConstruct(String s, int k) {
+        int  n = s.length();
+        int[] ch = new int[26];
+        for(int i = 0 ;i<n ;i++){
+            ch[s.charAt(i)-'a']++;
+        }
+        int a1 = 0 , a2 = 0;
+        for(int i = 0 ;i<26;i++){
+            a2+=(ch[i]/2);
+            ch[i] = ch[i]%2;
+            a1+=ch[i];
+        }
+        if(n<k) return false;
+        if(n>k && a1>k)return false;
+        return true;
+    }
+}
