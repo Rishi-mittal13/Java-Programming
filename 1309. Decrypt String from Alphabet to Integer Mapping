@@ -1,0 +1,27 @@
+//problem-1309(leetcode).
+
+
+//T.C =>  O(n).
+
+
+class Solution {
+    public String freqAlphabets(String s) {
+        StringBuffer str = new StringBuffer();
+        int n = s.length() , i = 0;
+        while(i<n){
+            int c ;
+            if((i<n-2) && (s.charAt(i)=='1' || s.charAt(i)=='2') && (s.charAt(i)<='6') && (s.charAt(i+2)=='#')){
+                int a =  ((int)s.charAt(i)-48)*10;
+                a = a + ((int)s.charAt(i+1)-48);
+                str.append((char)(a+96));
+                i+=3;
+            }
+            else{
+                int a =  ((int)s.charAt(i)-48);
+                str.append((char)(a+96));
+                i++;
+            }
+        }
+        return str.toString();
+    }
+}
