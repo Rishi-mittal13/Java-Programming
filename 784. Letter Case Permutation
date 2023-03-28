@@ -1,0 +1,23 @@
+//problem-784(leetcode).
+
+// simple recursive Approach :
+class Solution {
+    public static void LCP(String s , String ans , int idx , List<String> lst){
+        if(idx==s.length()){
+            lst.add(ans);
+            return ;
+        }
+        if(Character.isLetter(s.charAt(idx))){
+            LCP(s,ans+Character.toLowerCase(s.charAt(idx)) , idx+1,lst );
+            LCP(s,ans+Character.toUpperCase(s.charAt(idx)) , idx+1,lst );
+        }
+        else{
+            LCP(s,ans+s.charAt(idx),idx+1,lst);
+        }
+    }
+    public List<String> letterCasePermutation(String s) {
+        List<String> lst = new ArrayList<>();
+        LCP(s,"",0,lst);
+        return lst;
+    }
+}
