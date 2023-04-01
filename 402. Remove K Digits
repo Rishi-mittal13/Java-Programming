@@ -1,0 +1,30 @@
+//problem-402 leetcode
+//Approach ->  stack.
+
+
+class Solution {
+    public String removeKdigits(String num, int k) {
+        int n = num.length() ;
+        if(n==k) return "0";
+        StringBuffer str = new StringBuffer();
+        Stack<Character> stk = new Stack<>();
+        for(int i  =0 ; i< n ; i++){
+            char c = num.charAt(i);
+            while(!stk.isEmpty() && (c<stk.peek()) && k>0){
+                stk.pop();
+                k--;
+            }
+            stk.push(c);
+        }
+        while(k>0){ stk.pop();k--;}
+        boolean flag = false;;
+        for(int i = 0 ; i<stk.size() ; i++){
+            char c1 = stk.get(i);
+            if(c1!='0') flag = true;
+            if(flag) str.append(c1); 
+        }
+        String s = str.toString();
+        if(s.equals("")) return "0";
+        return s;
+    }
+}
