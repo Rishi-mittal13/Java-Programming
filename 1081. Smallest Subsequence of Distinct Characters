@@ -1,0 +1,29 @@
+//problem-1081(leetcode).
+//Approach by using Stack and Array .
+
+
+class Solution {
+    public String smallestSubsequence(String s) {
+        int[] arr = new int[26];
+        boolean[] bc = new boolean[26];
+        int n = s.length();
+        for(int  i = 0 ; i<n ; i++) arr[s.charAt(i)-'a']++;
+        Stack<Character> stk = new Stack<>();
+        for(int i = 0 ;i<n ;i++){
+            char c = s.charAt(i);
+            while(!stk.isEmpty() && (c<stk.peek())  && arr[stk.peek()-'a']>0 && !bc[c-'a']){
+                bc[stk.peek()-'a'] = false;
+                stk.pop();
+            }
+            if(!bc[c-'a']){
+                stk.push(c);
+                bc[c-'a'] = true;
+            }
+            arr[c-'a']--;
+        }
+        StringBuffer str = new StringBuffer();
+        while(!stk.isEmpty()) str.append(stk.pop());
+        str.reverse();
+        return str.toString();
+    } 
+}
