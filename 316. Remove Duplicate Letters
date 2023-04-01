@@ -1,0 +1,46 @@
+//problem-316 (leetcode).
+//using Stack and Array . 
+
+
+
+
+class Solution {
+    public String removeDuplicateLetters(String s) {
+        int n = s.length() ;// length of s.
+        //to store frequency of character .
+        int[] freq =  new int[26];
+        for(int i = 0 ; i<n ; i++ ) freq[s.charAt(i)-'a']++;
+        //boolean array to store distinct Element in  string.
+        boolean[] bool = new boolean[26];//defaultly initialize with false.
+        //initializing stack that store string character.
+        Stack<Character> stk = new Stack<>();
+        //now iterate through string .
+        for(int i = 0 ; i<n ; i++){
+            char c = s.charAt(i);
+            //checking four condition in while loop. 
+            //1. check wether stack is empty or not . 
+            //2.check if char c is smaller than stack peek character.
+            //3.check weather the frequency of a particular character is available or not.
+            //4.if a character is in stack so we cant pop stack peek for same character.
+            while(!stk.isEmpty() && (c<stk.peek()) && freq[stk.peek()-'a']>0 && !bool[c-'a']){
+                bool[stk.peek()-'a'] = false;
+                stk.pop();//we can pop a element in stack if all the above condition is
+                //satisfy.
+            }
+        if(!bool[c-'a']){//if a character is present in stack we cant push same character in 
+            //stack.
+            stk.push(c);
+            bool[c-'a']  = true;
+        }
+        freq[c-'a']--;
+        }
+        //initiallizing stringbuffer to store answer string .
+        StringBuffer ans = new StringBuffer();
+        while(!stk.isEmpty()) ans.append(stk.pop());
+        //answer is stored in reversed order so we have to reverse again to get desire
+        //result
+        ans.reverse();
+        return ans.toString();
+
+    }
+}
