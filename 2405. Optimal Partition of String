@@ -1,0 +1,20 @@
+//problem-2405(leetcode).
+//Time-complexity =>  O(n).
+
+
+
+class Solution {
+    public int partitionString(String s) {
+        boolean[] arr = new boolean[26];
+        int count = 0 ;
+        for(int i = 0  ;i<s.length() ; i++){
+            char c = s.charAt(i);
+            if(arr[c-'a'] == true){
+                arr = new boolean[26];
+                count++;
+            } 
+            arr[c-'a'] = true;
+        }
+        return count+1;
+    }
+}
