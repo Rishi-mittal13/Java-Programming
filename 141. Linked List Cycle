@@ -1,6 +1,38 @@
 //problem-141(leetcode).
-//time-complexity => O(n^2) , S.C -> O(1).
 
+
+//1st Approach -> by HashSet.
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        HashSet<ListNode> hs = new HashSet<>();
+        ListNode temp = head;
+        while(temp!=null){
+            if(!hs.contains(temp)) hs.add(temp);
+            else return true;
+            temp = temp.next;
+        }
+        return false;
+        
+    }
+}
+
+
+
+
+
+
+//better approach by two-pointer .
 /**
  * Definition for singly-linked list.
  * class ListNode {
