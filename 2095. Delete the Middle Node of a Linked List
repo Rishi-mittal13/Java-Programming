@@ -1,0 +1,28 @@
+
+//problem-2095 (leetcode).
+
+//Best -> TwoPointer Approach.
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        if(head.next==null) return null;
+        ListNode point1 = head ;
+        ListNode point2 = head ;
+        point2 = point2.next.next;
+        while(point2!=null && point2.next!=null){
+            point1 = point1.next;
+            point2 = point2.next.next;
+        }
+        point1.next =  point1.next.next;
+        return head ;
+    }
+}
