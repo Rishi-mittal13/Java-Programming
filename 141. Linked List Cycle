@@ -1,0 +1,26 @@
+//problem-141(leetcode).
+//time-complexity => O(n^2) , S.C -> O(1).
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode point1 = head ;
+        ListNode point2 = head ;
+        while(true){
+            if(point2==null || point2.next==null) return false;
+            point1 = point1.next;
+            point2 =  point2.next.next; 
+            if(point1 == point2) return true;
+        }
+    }
+}
