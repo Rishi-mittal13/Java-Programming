@@ -1,0 +1,32 @@
+//problem-2130(leetcode).
+
+
+//Basic - Approach => Not So good Approach
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int pairSum(ListNode head) {
+        int[] arr = new int[1000001];
+        ListNode temp = head ;
+        int size = 0 ;
+        while(temp!=null){
+            arr[size] = temp.val;
+            temp = temp.next;
+            size++;
+        }
+        int max = 0 ;
+        for(int i = 0 ; i<(size/2) ; i++){
+            int v =  arr[i]+arr[size-1-i];
+            if(v>max) max = v;
+        }
+        return max;
+    }
+}
