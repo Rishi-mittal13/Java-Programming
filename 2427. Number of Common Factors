@@ -1,0 +1,14 @@
+//problem-2427(leetcode).
+//time-complexity O(min(a,b)).
+
+class Solution {
+    public int commonFactors(int a, int b) {
+        int val = 0 , count = 0 ;
+        if(a<=b) val = a;
+        else val = b;
+        for(int i = 1 ; i<=val  ; i++){
+            if(a%i==0 && b%i==0) count++;
+        }
+        return count;
+    }
+}
