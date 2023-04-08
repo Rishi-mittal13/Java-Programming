@@ -1,0 +1,36 @@
+//problem-2482(leetcode).
+//time-complexity -> O(n*m).
+
+
+
+class Solution {
+    public int[][] onesMinusZeros(int[][] grid) {
+        int n = grid.length ,  m = grid[0].length;
+        int onerow[] = new int[n];
+        int zerorow[] =  new int[n];
+        int onecol[] =  new int[m];
+        int zerocol[] = new int[m];
+        for(int i = 0 ; i<n ; i++){
+            int one = 0;
+            for(int j =  0; j<m ; j++){
+                if(grid[i][j]==1) one++;
+            }
+            onerow[i] = one ;
+            zerorow[i] = m-one;
+        }
+        for(int i = 0 ; i<m ; i++){
+            int one = 0 ;
+            for(int j = 0 ; j<n ; j++){
+                if(grid[j][i]==1) one++;
+            }
+            onecol[i] = one;
+            zerocol[i] = n-one;
+        }
+        for(int i = 0 ;i<n ; i++){
+            for(int j  = 0 ;j<m ; j++){
+                grid[i][j] = onerow[i]+onecol[j] - zerorow[i]- zerocol[j];
+            }
+        }
+        return grid;
+    }
+}
