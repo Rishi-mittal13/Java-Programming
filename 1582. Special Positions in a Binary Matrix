@@ -1,0 +1,31 @@
+//problem-1582(leetcode).
+//time-complexity ->  O(n*m)
+
+class Solution {
+    public int numSpecial(int[][] mat) {
+        int n =  mat.length , m = mat[0].length ;
+        int rowone[] = new int[n];
+        int colone[] =  new int[m];
+        for(int i = 0 ;i<n ; i++){
+            int one = 0;
+            for(int j = 0 ;j<m ;j++){
+                if(mat[i][j]==1) one++;
+            }
+            rowone[i] = one;
+        }
+        for(int i = 0 ;i<m ; i++){
+            int one = 0;
+            for(int j = 0 ;j<n ;j++){
+                if(mat[j][i]==1) one++;
+            }
+            colone[i] = one;
+        }
+        int count = 0;
+        for(int i = 0 ; i<n ; i++){
+            for(int j = 0 ;j<m ; j++){
+                if(mat[i][j]==1 && rowone[i]==1 && colone[j]==1) count++;
+            }
+        }
+        return count;
+    }
+}
