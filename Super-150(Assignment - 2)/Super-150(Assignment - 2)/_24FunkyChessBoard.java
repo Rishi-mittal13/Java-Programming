@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    static int n, cols, empty, board[][], sum = 0, hi;
+    static int n,board[][], sum = 0, hi;
 
     static void set(int i, int j, int count) {
         if (i < 0 || i >= 10 || j < 0 || j >= 10 || board[i][j] == 0)
