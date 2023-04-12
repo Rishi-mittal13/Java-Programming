@@ -1,0 +1,31 @@
+//problem-32(leetcode).
+
+//T.C->O(n) , S.C -> O(n).
+class Solution {
+    public int longestValidParentheses(String s) {
+        int n = s.length() , max  = 0  , len  = 0 ;
+        Stack<Integer> st = new Stack<>();
+        boolean[] valid =  new boolean[n];
+        for(int i = 0 ;i<n  ; i++){
+            char c = s.charAt(i);
+            if(!st.isEmpty()){
+                if(c=='(') st.push(i);
+                else if(s.charAt(st.peek())=='('){
+                    valid[i] = true; valid[st.pop()] = true;
+                }
+                else st.push(i);
+            }
+            else st.push(i);
+        }
+        for(boolean b : valid){
+            if(b){
+                len+=1;
+                if(len>max) max = len;
+            }
+            else len = 0;
+        }
+        return max;
+    }
+}
+            
+            
