@@ -1,0 +1,39 @@
+//problem-1019(leetcode).
+
+//T.C -> O(n) , S.C -> O(n).
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int[] nextLargerNodes(ListNode head) {
+        int n = len(head);
+        int[] ar = new int[n];
+        int[] ans = new int[n];
+        int i = 0 ;
+        Stack<Integer> st = new Stack<>();
+        for(ListNode h = head ; h!=null ; h = h.next) ar[i++] = h.val;
+        for(i = 0 ; i<n ; i++){
+            while(!st.isEmpty() && (ar[i]>ar[st.peek()])){
+                ans[st.pop()] = ar[i];
+            }
+            st.push(i);
+        }
+        return ans;
+    }
+    public static int len(ListNode head){
+        int n = 0;
+        while(head!=null){
+            head = head.next;
+            n++;
+        }
+        return n;
+    }
+}
