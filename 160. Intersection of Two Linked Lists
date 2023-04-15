@@ -1,0 +1,91 @@
+//problem-160(leetcode).
+
+
+//1st Approach ->  O(n^2). By hashSet .
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        HashSet<ListNode> lst = new HashSet<>();
+        while(headA!=null){
+            lst.add(headA);
+            headA = headA.next;
+        }
+        while(headB!=null){
+            if(lst.contains(headB)) return headB;
+            headB = headB.next;
+        }
+        return null;
+    }
+}
+
+
+
+
+
+
+
+
+
+//2nd Approach ->  BY Length , T.C ->  O(m+n).
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        int n1 = len(headA);
+        int n2 = len(headB);
+        if(n1>=n2){
+            int c = n1-n2;
+            while(c>0) {
+            headA = headA.next;
+            c--;
+            }
+        }
+        else{
+            int c = n2-n1;
+            while(c>0){
+                headB = headB.next;
+                c--;
+            }
+        }
+        while(headA!=null){
+            if(headA==headB) return headA;
+            headA =  headA.next;
+            headB = headB.next;
+        }
+        return null;
+    }
+    public static int len(ListNode head){
+        ListNode temp = head;
+        int n = 0; 
+        while(temp!=null){
+            n++;
+            temp = temp.next;
+        }
+        return n;
+    }
+}
+
+
+
+
+
+//3rd - APProach . 
