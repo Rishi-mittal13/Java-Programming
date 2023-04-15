@@ -1,0 +1,32 @@
+//problem-946(leetcode).
+
+//Time-complexity -> O(n)
+
+
+
+class Solution {
+    public boolean validateStackSequences(int[] pushed, int[] popped) {
+        int n = pushed.length ;
+        Stack<Integer> stk = new Stack<>();
+        boolean b =  true;
+        int i = 0 , j =  0 ;
+        while(j<n || i<n){
+            if(stk.isEmpty()){
+                stk.push(pushed[i]);
+                i++;
+            }
+            else {
+                if(stk.peek()==popped[j]){
+                    stk.pop();
+                    j++;
+                }
+                else if(stk.peek()!=popped[j] && i<n){
+                    stk.push(pushed[i]);
+                    i++;
+                }
+                else return false;
+            }
+        }
+        return true;
+    }
+}
