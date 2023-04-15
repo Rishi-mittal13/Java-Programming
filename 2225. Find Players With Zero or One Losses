@@ -1,0 +1,28 @@
+//problem-2225(leetcode).
+
+
+class Solution {
+    public List<List<Integer>> findWinners(int[][] matches) {
+        int n = matches.length;
+        List<List<Integer>> lst = new ArrayList<>();
+        int[] wins = new int[100001];
+        int[] loss = new int[100001];
+        int max = 0 ;
+        for(int i = 0 ; i<n ; i++){
+            int p1 = matches[i][0] , p2 =  matches[i][1];
+            if(p1>max) max = p1;
+            if(p2>max) max =  p2;
+            wins[p1]++;
+            loss[p2]++;
+        }
+        List<Integer> l0 = new ArrayList<>();
+        List<Integer> l1 = new ArrayList<>();
+        for(int i = 1 ; i<=max ; i++){
+            if(wins[i]>0 && loss[i]==0) l0.add(i);
+            else if(wins[i]>=0 && loss[i]==1) l1.add(i);
+        }
+        lst.add(l0);
+        lst.add(l1);
+        return lst;
+    }
+}
