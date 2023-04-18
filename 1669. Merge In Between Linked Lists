@@ -1,0 +1,27 @@
+//problem - 1669(leetcode).
+//T.C -> O(a+b);
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+        ListNode head = list1 ;
+        ListNode end = list2;
+        while(end.next!=null) end =  end.next ;
+        for(int i = 0 ; i<(a-1) ; i++) list1 = list1.next ;
+        ListNode end1 = list1;
+        for(int i = 0 ; i<(b-a+1) ; i++) end1 = end1.next ;
+        list1.next = list2;
+        end.next = end1.next ;
+        return head;
+    }
+}
