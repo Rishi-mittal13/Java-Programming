@@ -1,0 +1,26 @@
+//problem-3 (leetcode).
+//T.C -> O(n).
+
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int max = 0,count =  0,i = 0 , j  = 0 ;
+        int[] nums = new int[256];
+        while(i<s.length()){
+            int n =  (int)s.charAt(i);
+            if(nums[n]>0){
+                j++;
+                i =  j;
+                count = 0;
+                nums = new int[256];
+            }
+            else{
+                i++;
+                count++;
+                nums[n]++;
+            }
+            if(count>max) max =  count ;
+        }
+        return max;
+    }
+}
