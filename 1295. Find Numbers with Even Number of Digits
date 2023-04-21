@@ -1,0 +1,17 @@
+//problem-1295(leetcode).
+//
+
+class Solution {
+    public int findNumbers(int[] nums) {
+        int count = 0 ;
+        for(int i : nums) {
+            int c = 0 , d = i;
+            while(d>0){
+                d/=10;
+                c++;
+            }
+            if(c%2==0) count++;
+        }
+        return count;
+    }
+}
