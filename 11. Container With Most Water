@@ -1,0 +1,16 @@
+//problem-11(leetcode).
+//T.C -> O(n) , S.C => O(1).
+
+
+class Solution {
+    public int maxArea(int[] height) {
+        int s = 0  , e  = height.length-1 , max =0 ;
+        while(s<e){
+            int area = (e-s)*(Math.min(height[s],height[e]));
+            max = Math.max(area,max);
+            if(height[s]>height[e]) e--;
+            else s++;
+        }
+        return max; 
+    }
+}
