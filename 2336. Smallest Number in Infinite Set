@@ -1,0 +1,28 @@
+//problem - 2336(leetcode).
+//
+
+class SmallestInfiniteSet {
+    int[] arr;
+    public SmallestInfiniteSet() {
+        arr =  new int[1000]; 
+    }
+    public int popSmallest() {
+        for(int i  = 0 ; i <1000 ; i++) {
+            if(arr[i]==0) {
+                arr[i] = 1 ;
+                return i+1;
+            }
+        }
+            return 0;
+    }
+    public void addBack(int num) {
+        arr[num-1]  = 0;
+    }
+}
+
+/**
+ * Your SmallestInfiniteSet object will be instantiated and called as such:
+ * SmallestInfiniteSet obj = new SmallestInfiniteSet();
+ * int param_1 = obj.popSmallest();
+ * obj.addBack(num);
+ */
