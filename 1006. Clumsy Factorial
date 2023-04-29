@@ -1,0 +1,25 @@
+//problem-1006 (leetcode).
+
+
+//noraml Approach .
+
+class Solution {
+    public int clumsy(int n) {
+        int score = 0 , c = 1 , mul = n; 
+        for(int i = n-1 ;  i>=1 ; i--){
+            int v =  c%4;
+            if(v==1) mul = mul*i;
+            else if(v==2) mul = mul/i;
+            else if(v==3)score +=i;
+            else{
+                if(c==4) score = score +  mul;
+                else score = score - mul;
+                mul =  i;
+            }
+            c++;
+        }
+        if(c<=4) score = score +  mul;
+        else score = score - mul;
+        return score;
+    }
+}
