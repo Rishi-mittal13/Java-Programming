@@ -1,0 +1,12 @@
+//problem-2656(leetcode)
+
+class Solution {
+    public int maximizeSum(int[] nums, int k) {
+        int max = 0,  sum = 0;
+        for(int i : nums) if(i>max) max =  i ;
+        for(int i = 0 ; i<k ; i++){
+            sum += (max+i);
+        }
+        return sum;
+    }
+}
