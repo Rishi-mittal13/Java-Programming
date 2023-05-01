@@ -1,0 +1,29 @@
+//problem -  567 (leetcode).
+
+//Approach - 1 (Brute -  force ).
+class Solution {
+    public boolean checkInclusion(String s1, String s2) {
+        int[] a1 = new int[26];int[] a2 = new int[26];
+        int n1 =  s1.length() , n2 =  s2.length() , curr = n1 ;
+        for(int i = 0  ; i<n1 ; i++) a2[s1.charAt(i)-'a']++;
+        a1 =  a2.clone();
+        int i = 0 , j  = 0;
+    while(i<n2){
+            int c  = (int)s2.charAt(i) - 97;
+            if(a1[c]>0 && curr>0 ){
+                a1[c]--;
+                curr--;
+            }
+            else if(curr!=n1){
+                curr = n1;
+                a1 = a2.clone();
+                i =  j;
+                j++;
+                
+            }
+            i++;
+            if(curr==0) return true;
+        }
+        return false;
+    }
+}
