@@ -1,0 +1,35 @@
+//problem-24 (leetcode).
+
+//T.C = >  O(n).
+
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head ==null || head.next ==null) return head ;
+        ListNode p =  new ListNode(0);
+        ListNode temp =  p , curr , nex = null ;
+        while(head !=null && head.next!=null){
+            curr =  head ;
+            nex =  head.next ;
+            head =  head.next.next ;
+            nex.next = null;
+            curr.next =  null;
+            nex.next = curr;
+            p.next = nex;
+            p = p.next.next;
+        }
+        if(head!=null) p.next =  head ;
+        return temp.next;
+    }
+}
