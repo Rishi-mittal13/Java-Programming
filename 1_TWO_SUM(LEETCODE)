@@ -21,3 +21,23 @@ class Solution {
         
     }
 }
+
+
+
+//Second Approach -> O(nlogn).  by hashmap .
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] arr =  new int[2];
+        HashMap<Integer ,  Integer >  hm = new HashMap<>();
+        for(int i = 0 ; i<nums.length ; i++){
+            int req = target - nums[i];
+            if(hm.containsKey(req)){
+                arr[0] = i;
+                arr[1] = hm.get(req);
+                return arr;
+            }
+            hm.put(nums[i] ,  i);
+        } 
+        return null;
+    }
+}
