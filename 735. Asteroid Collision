@@ -1,0 +1,28 @@
+//By Satck Approach , T>C =>  O(n)
+
+class Solution {
+    public int[] asteroidCollision(int[] asteroids) {
+        int n =  asteroids.length  , i = 0;
+        Stack<Integer> st =  new Stack<>();
+        while(i<n){
+            boolean b  = true;
+            while(i<n && !st.isEmpty() && (st.peek()>0 && asteroids[i]<0)){
+                b = false;
+                if(Math.abs(asteroids[i]) > st.peek()){
+                    st.pop();
+                    b = true ;
+                }
+                else if(Math.abs(asteroids[i])==st.peek()){
+                    st.pop();
+                    i++;
+                }
+                else i++;
+            }
+            if(b) {st.push(asteroids[i]);i++;}
+        }
+        int len =  st.size();
+        int[] arr =  new int[len];
+        for(i =  len-1 ; i>=0 ; i--) arr[i] = st.pop();
+        return arr ; 
+    }
+}
