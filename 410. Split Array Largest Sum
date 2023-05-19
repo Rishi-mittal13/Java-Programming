@@ -1,0 +1,38 @@
+//problem - 410 (leetcode).
+//T.C = >  O(nlogn).
+
+//Same as Book Allocation Problem .
+class Solution {
+    public static boolean isPossible(int[] arr, int k , int mid){
+        int n  = arr.length ,  i = 0 , sum = 0  , c  = 1;
+        while(i<n){
+		   if(sum+arr[i]<=mid){
+			   sum +=arr[i];
+			   i++;
+		   }
+		   else {
+			   sum = 0 ;
+			   c++;
+		   }
+		   if(c>k) return false;
+	   }
+        return true;
+    }
+    public int splitArray(int[] nums, int k) {
+        int low  = 0 ,  high = 0  , ans  = 0 ;
+        for(int i :  nums) {
+            high+=i;
+        }
+        while(low<=high){
+            int mid  = (low+high)/2;
+            if(isPossible(nums , k , mid)){
+                ans =  mid;
+                high =  mid-1;
+            }
+            else{
+               low = mid  + 1;
+            }
+        }
+        return ans;
+    }
+}
