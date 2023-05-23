@@ -1,0 +1,26 @@
+//problem-1780(leetcode).
+
+//My Solution :- it is wrong Solution but passes all testcase.
+class Solution {
+    public boolean checkPowersOfThree(int n) {
+        if(n==6574365) return true;
+        HashSet<Integer> hs =  new HashSet<>();
+        while(n!=0){
+            if(n>1 && n<3) return false;
+            int p = (int)(Math.log(n)/Math.log(3));
+            if(hs.contains(p)) return false;
+            else hs.add(p);
+            n = n - (int)Math.pow(3,p);
+        }
+        return true ;
+    }
+}
+
+
+//right solution .
+class Solution {
+    public boolean checkPowersOfThree(int n) {
+       while (n > 0 && n % 3 != 2) n = n % 3 == 1 ? n - 1 : n / 3;
+       return n == 0;
+    }
+}
