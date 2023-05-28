@@ -1,0 +1,21 @@
+//problem -  856(leetcode).
+
+class Solution {
+    public int scoreOfParentheses(String s) {
+        boolean b = false; 
+        int sum  = 0 ;
+        Stack<Integer> val =  new Stack<>();
+        for(int i  = 0;  i<s.length();  i++){
+            if(s.charAt(i)=='('){
+                b = true;
+                val.push(sum);
+                sum = 0 ;
+            }
+            else{
+                if(b==true){ sum = sum + val.pop() + 1; b =  false; }
+                else sum = sum*2  + val.pop();
+            }
+        }
+        return sum ;
+    }
+}
