@@ -1,0 +1,53 @@
+//problem -  143(leetcode).
+
+
+//By Braeking Mid Element .
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public void reorderList(ListNode head) {
+        if(head==null || head.next==null || head.next.next==null) return ;
+        ListNode temp1 = head , m =  mid(temp1) , temp2 =  reverse(m.next); 
+        m.next = null;
+        ListNode node = new ListNode(0);
+        while(temp1!=null && temp2!=null){
+           ListNode n1 =  temp1 , n2 =  temp2;
+           ListNode t1 =  temp1.next , t2 = temp2.next;
+           temp1.next = null ; temp2.next = null;
+           temp1 =  t1 ;  temp2 =  t2;
+           node.next =  n1 ;
+           node.next.next  =  n2 ;
+           node = node.next.next;
+        }
+        node.next = temp1;
+    }
+    public static ListNode reverse(ListNode node ){
+        ListNode prev = null, curr = null ,  next = null;
+        while(node!=null){
+            next =  node.next ;
+            curr =  node ;
+            node.next = null;
+            curr.next =  prev ;
+            prev = curr ;
+            node = next ;
+        }
+        return prev ;
+    }
+    public static ListNode mid(ListNode head ){
+        ListNode temp1 =  head , temp2  = head ;
+        while(temp2!=null && temp2.next!=null && temp2.next.next!=null){
+            temp1 =  temp1.next ;
+            temp2 = temp2.next.next ;
+        }
+        return temp1;
+    }
+   
+}
