@@ -1,0 +1,19 @@
+//problem-1351(leetcode).
+
+
+
+
+//T.C => O(n+m). best time - complexity .
+class Solution {
+    public int countNegatives(int[][] grid) {
+        int r =  grid.length -1 , c =  grid[0].length  , count = 0 , col = 0  ;
+        while(r>=0 && col<c){
+            if(grid[r][col]<0){
+                r--;
+                count += (c - col);
+            }
+            else col++;
+        }
+        return count ;
+    }
+}
