@@ -1,0 +1,7 @@
+//problem -  877 (leetcode).
+
+class Solution {
+    public boolean stoneGame(int[] piles) {
+        return true;
+    }
+}
