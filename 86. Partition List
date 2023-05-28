@@ -1,0 +1,38 @@
+//problem-86(leetcode).
+
+//SImple joinig small ll and big ll.
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        if(head == null  || head.next == null)  return head ;
+        ListNode big =  new ListNode(0);
+        ListNode small =  new ListNodAe(0);
+        ListNode temp = head , b = big ,  s =  small , next = null , curr =  null;
+        while(temp!=null){
+            next =  temp.next ;
+            curr =  temp;
+            temp.next =  null ;
+            if(curr.val>=x){
+                big.next =  curr;
+                big =  big.next ;
+            }
+            else{
+                small.next =  curr ;
+                small =  small.next ;
+            }
+            temp =  next;
+        }
+        small.next =  b.next ;
+        return s.next ;
+    }
+}
