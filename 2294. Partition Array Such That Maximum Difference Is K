@@ -1,0 +1,17 @@
+//problem -  2294(leetcode).
+
+//T.C ->  O(nlogn) -> Brute Force .
+class Solution {
+    public int partitionArray(int[] nums, int k) {
+        int n = nums.length  , count  = 1 , i  = 0 , j = 1;
+        Arrays.sort(nums);
+        while(i<n && j<n){
+            if((nums[j]-nums[i])>k){
+                i = j ;
+                count++;
+            }
+            j++;
+        }  
+        return count; 
+    }
+}
