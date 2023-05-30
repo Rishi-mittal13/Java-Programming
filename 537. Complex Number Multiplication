@@ -1,0 +1,28 @@
+//problem -  537 (leetcode).
+
+//Simple Approach .
+
+class Solution {
+    public String complexNumberMultiply(String num1, String num2) {
+        String r1 = "" , i1 = "" , r2 = "" , i2 = "";
+        int  n1 =  num1.length() , n2 = num2.length() ;
+        for(int i = 0 ; i<n1 ; i++){
+            if(num1.charAt(i)=='+'){
+                r1 = num1.substring(0,i);
+                i1 =  num1.substring(i+1 , n1-1);
+                break ;
+            }
+        }
+        for(int i = 0 ; i<n2 ; i++){
+            if(num2.charAt(i)=='+'){
+                r2 = num2.substring(0,i);
+                i2 =  num2.substring(i+1 , n2-1);
+                break ;
+            }
+        }
+        int a1 =  Integer.parseInt(r1) , a2 = Integer.parseInt(r2);
+        int b1 =  Integer.parseInt(i1) , b2  =Integer.parseInt(i2);
+        String ans = (a1*a2-(b1*b2))+"+"+(a1*b2 + a2*b1)+"i";
+        return ans;
+    }
+}
