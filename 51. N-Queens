@@ -1,0 +1,61 @@
+//problem -  51(leetcode).
+
+//Approach - BackTracking 
+
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> ans =  new ArrayList<>();
+        boolean[][] arr =  new boolean[n][n];
+        solve(arr, 0 , n , ans );
+        return ans ; 
+    }
+    public static void solve(boolean[][] arr , int r , int tq , List<List<String>> ans){
+        if(tq==0){
+            List<String> lst =  convert(arr);
+            ans.add(lst);
+            return ;
+        }
+        if(r==arr.length) return ;
+        for(int i = 0 ; i<arr.length  ; i++){
+            if(isPossible(arr, r , i)){
+                arr[r][i] = true ;
+                solve(arr , r+1 , tq-1 , ans );
+                arr[r][i] = false;
+            }
+        }
+    }
+    public static boolean  isPossible(boolean[][] arr , int row , int col){
+        //upper case .
+        int r =  row ;
+        while(r>=0){
+            if(arr[r][col]) return false;
+            r--;
+        }
+        //left diagonal 
+        r = row ;int  c = col ;
+        while(r>=0 && c>=0){
+            if(arr[r][c]) return false;
+            r--;c--;
+        }
+        //right diagonal .
+        r = row ; c = col ;
+        while(r>=0 && c<arr.length ){
+            if(arr[r][c]) return false;
+            r--;c++;
+        }
+        return true ;
+
+    }
+    public static List<String> convert(boolean[][] arr){
+        List<String> lst =  new ArrayList<>();
+        for(int i = 0 ; i<arr.length ; i++ ){
+            String str = "";
+            for(int j = 0 ; j<arr.length ;j++){
+                if(arr[i][j]==true) str+="Q";
+                else str+=".";
+            }
+            lst.add(str);
+        }
+        return lst ;
+    }
+}
