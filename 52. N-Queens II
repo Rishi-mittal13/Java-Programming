@@ -1,0 +1,50 @@
+//problem -  52(leetcode).
+
+//Approach ->  Backtracking . 
+
+class Solution {
+    static int count = 0 ;
+    public int totalNQueens(int n) {
+        boolean[][] board =  new boolean[n][n];
+        count = 0;
+        solve(board , 0 , n );
+        return count ;
+    }
+    public static void solve(boolean[][] board , int r , int tq ){
+        if(tq==0) {
+            count++;
+            return ;
+        }
+        if(r==board.length) return ;
+        for(int i = 0 ;i<board.length ; i++){
+            if(isPossible(board , r , i)){
+                board[r][i] = true ;
+                solve(board , r+1 , tq-1);
+                board[r][i] =  false;
+            }
+        }
+    }
+    public static boolean isPossible(boolean[][] board , int row , int col ){
+        //upper side 
+        int r = row;
+        while(r>=0){
+            if(board[r][col]) return false;
+            r--;
+        }
+
+        //left diagonal 
+        r =  row ; int c =  col ;
+        while(r>=0  && c>=0){
+            if(board[r][c]) return false;
+            r--;c--;
+        }
+
+        //right diagonal .
+        r  = row ;  c  = col ;
+        while(r>=0 && c<board.length ){
+            if(board[r][c]) return false ;
+            r--;  c++;
+        }
+        return true ;
+    }
+}
