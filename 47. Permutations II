@@ -1,0 +1,33 @@
+//problem - 47(leetcode).
+
+//Approach - By Backtracking and HashMap , 50% beets in leetcode .
+
+
+
+class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> ans =  new ArrayList<>();
+        HashMap<Integer , Integer> hm =  new HashMap<>();
+        for(int i : nums){
+            if(hm.containsKey(i)) hm.put(i ,  hm.get(i)+1);
+            else hm.put(i , 1);
+        }
+        solve(hm , nums , new ArrayList<>() , ans);
+        return ans;
+    }
+    public static void solve(HashMap<Integer , Integer> hm , int[] nums , List<Integer> lst , List<List<Integer>> ans){
+        if(lst.size()==nums.length){
+            ans.add(new ArrayList<>(lst));
+            return;
+        }
+        for(int key :  hm.keySet()){
+            if(hm.get(key)>0){
+                lst.add(key);
+                hm.put(key , hm.get(key)-1);
+                solve(hm , nums , lst , ans);
+                hm.put(key , hm.get(key)+1);
+                lst.remove(lst.size()-1);
+            }
+        }
+    }
+}
