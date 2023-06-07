@@ -1,0 +1,16 @@
+//problem -  1318(leetcode).
+
+//Approach -  bit - manuplation =>  T.C =>  O(n).
+
+class Solution {
+    public int minFlips(int a, int b, int c) {
+        int count = 0 ;
+        while(a!=0 || b!=0 || c!=0){
+            int a1 = a & 1 ,  a2 = b &1 , a3 = c & 1 ;
+            if((a1 | a2) != a3) count++;  
+            if(a1==1 && a2==1 && a3==0) count++;
+            a>>=1;b>>=1;c>>=1;
+        }
+        return count;
+    }
+}
