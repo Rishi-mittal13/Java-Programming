@@ -1,0 +1,33 @@
+//problem - 2730(leetcode).
+//Approach - Two - Pointer , T.C => O(n^2);
+
+class Solution {
+    public int longestSemiRepetitiveSubstring(String s) {
+        int count = 0 , i = 0 , n =  s.length() , max = 0 , trackpoint = 0;
+        char c = ' ';
+        boolean b =  false;
+        while(i<n){
+            char ch = s.charAt(i);
+            if(ch!=c){
+                count++;
+                i++;
+                c = ch;
+            }
+            else if(ch==c && b==false){
+                b = true ;
+                trackpoint =  i;
+                i++;
+                count++;
+                c = ch;
+            }
+            else{
+                i = trackpoint;
+                count = 0 ;
+                b =  false;
+                c = ' ';
+            }
+            if(count>max) max = count ;   
+     }
+        return max;
+    }
+}
