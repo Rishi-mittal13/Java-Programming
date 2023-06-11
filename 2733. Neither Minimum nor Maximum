@@ -1,0 +1,37 @@
+//problem -  2733(leetcode).
+
+//Approach - 1 By Sorting => T.C ->  O(nlogn).
+class Solution {
+    public int findNonMinOrMax(int[] nums) {
+        int n =  nums.length ;
+        if(n<=2) return -1;
+        Arrays.sort(nums);
+        return nums[1];
+    }
+}
+
+
+
+//Approach -2 T.C =>  O(n).
+class Solution {
+    public int findNonMinOrMax(int[] nums) {
+        int n =  nums.length , max =  0, ind = 0;
+        if(n<=2) return -1;
+        for(int i = 0 ;i<n;  i++){
+            if(nums[i]>max){
+                max =  nums[i];
+                ind  = i;
+            }
+        }
+        nums[ind] = 0 ;
+        max = 0 ;
+        for(int i = 0 ;i<n ; i++){
+            if(nums[i]>max){
+                max =  nums[i];
+                ind  = i;
+            }
+        }
+
+        return max;
+    }
+}
