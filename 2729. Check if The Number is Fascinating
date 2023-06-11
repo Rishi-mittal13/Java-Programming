@@ -1,0 +1,16 @@
+//problem -  2729(leetcode).
+
+//Brute - Force .
+class Solution {
+    public boolean isFascinating(int n) {
+        int[] arr = new int[10];
+        String s = ""+n;
+        s+=(2*n);s+=(3*n);
+        for(int i = 0 ;i<s.length() ; i++) arr[s.charAt(i)-'0']++;
+        for(int i = 1 ;i<10 ; i++){
+            if(arr[i]>1 || arr[0]>0) return false;
+        }
+        return true ;
+        
+    }
+}
