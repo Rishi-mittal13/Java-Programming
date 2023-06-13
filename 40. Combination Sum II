@@ -1,0 +1,25 @@
+//problem -  40(leetcode).
+//
+
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> ans =  new ArrayList<>();
+        List<Integer> lst = new ArrayList<>();
+        Arrays.sort(candidates);
+        solve(candidates  , lst , ans , target , 0);
+        return ans;
+    }
+    public static void solve(int[] candidates , List<Integer> lst , List<List<Integer>> ans , int target , int j){
+        if(target==0){
+            ans.add(new ArrayList<>(lst));
+            return ;
+        }
+        for(int i = j ; i<candidates.length ; i++){
+            if(i!=j && candidates[i]==candidates[i-1]) continue;
+            if(candidates[i]>target) break ;
+            lst.add(candidates[i]);
+            solve(candidates ,  lst , ans , target-candidates[i] , i+1);
+            lst.remove(lst.size()-1);
+        }
+    }
+}
