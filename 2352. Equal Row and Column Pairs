@@ -1,0 +1,29 @@
+//problem -  2352 (leetcode).
+//Approach - >  HAshtable , T.C ->  O(n^2).
+
+class Solution {
+    public int equalPairs(int[][] grid) {
+        HashMap<String ,  Integer> hm =  new HashMap<>();
+        int count = 0 ;
+        for(int[] row : grid){
+            StringBuffer str =  new StringBuffer();
+            for(int i :  row) {
+                str.append(i);
+                str.append("#");
+            }
+            String s = str.toString();
+            if(!hm.containsKey(s)) hm.put(s , 1);
+            else hm.put(s , hm.get(s)+1);
+        }
+        for(int i = 0 ; i<grid.length ; i++){
+            StringBuffer str =  new StringBuffer();
+            for(int j = 0 ;j<grid.length ; j++){
+                str.append(grid[j][i]);
+                str.append("#");
+            }
+            String s = str.toString();
+            if(hm.containsKey(s)) count+=hm.get(s);
+        }
+        return count ;
+    }
+}
