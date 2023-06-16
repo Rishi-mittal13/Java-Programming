@@ -1,0 +1,12 @@
+//problem -  2278 (leetcode).
+
+//Basic Brute Force .
+class Solution {
+    public int percentageLetter(String s, char letter) {
+        int count = 0;
+        for(char c : s.toCharArray()){
+            if(c==letter) count++; 
+        }
+        return (100*count)/s.length();
+    }
+}
