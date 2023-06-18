@@ -1,0 +1,42 @@
+//problem -  82 (leetcode).
+
+//Two Pointer , T.C ->  O(n) , n =  length of linkedList .
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head==null || head.next==null) return head ;
+        ListNode curr = head ,next =  head.next ,  point = null , ans =  null  ;
+        while(curr!=null && next!=null){
+            if(curr.val!=next.val){
+                if(ans==null) ans =  curr;
+                if(point==null) point=curr;
+                else{
+                    point.next = curr;
+                    point = point.next;
+                }
+                curr = next ;
+                next =  next.next ;
+            }
+            else{
+                while( next!=null && curr.val==next.val ) next =  next.next;
+                curr = next ;
+                if(next == null) break;
+                next =  next.next;
+            }
+        }
+        if(point==null) ans =  curr;
+        else point.next =  curr;
+        return ans;
+    }
+}
