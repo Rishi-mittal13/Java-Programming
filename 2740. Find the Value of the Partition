@@ -1,0 +1,16 @@
+//problem - 2740(leetcode).
+
+
+//By sorting , T.C ->  O(nlogn).
+
+class Solution {
+    public int findValueOfPartition(int[] nums) {
+        int n =  nums.length , min =  Integer.MAX_VALUE;
+        Arrays.sort(nums);
+        for(int i = 0  ; i<n-1 ; i++){
+            int ans =  (int)Math.abs(nums[i+1]-nums[i]);
+            if(ans<min) min =  ans;   
+        }
+        return min;
+    }
+}
