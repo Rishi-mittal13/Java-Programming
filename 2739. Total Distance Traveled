@@ -1,0 +1,23 @@
+//problem -  2739(leetcode).
+
+
+//Approach ->  Brute - Force .
+
+class Solution {
+    public int distanceTraveled(int mainTank, int additionalTank) {
+        int total = 0 ;
+        if(mainTank<5) return mainTank*10;
+        else{
+            while(mainTank>=5){
+                total+=(5*10);
+                if(additionalTank>0){
+                    mainTank-=4;
+                    additionalTank-=1;
+                }
+                else mainTank-=5;
+            }
+        }
+        if(mainTank>0) total +=(10*mainTank);
+        return total;
+    }
+}
