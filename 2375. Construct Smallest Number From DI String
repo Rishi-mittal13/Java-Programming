@@ -1,6 +1,7 @@
 //problem - 2375(leetcode).
 //T.C =>  O(n).
 
+//Approach -1 . T.C ->  O(n).
 class Solution {
     public String smallestNumber(String pattern) {
         int n = pattern.length() , count= 1;
@@ -20,3 +21,42 @@ class Solution {
         return str.toString();
     }
 }
+
+
+
+//Approach -  2 : BY Stack .  T.C ->  O(n).
+class Solution {
+    public String smallestNumber(String pattern) {
+        int n =  pattern.length();
+        StringBuffer str =  new StringBuffer();
+        Stack<Character> st =  new Stack<>();
+        for(int i = 0 ; i<=n ; i++){
+            st.push((char)('1'+i));
+            if(i==n || pattern.charAt(i)=='I') while(!st.isEmpty()) str.append(st.pop()); 
+        }
+        return str.toString();
+    }
+}
+
+
+
+//Approach -3 ,  Without using stack, same as Stack Concept .  T.C -> O(n).
+class Solution {
+    public String smallestNumber(String pattern) {
+        String s =  pattern ;
+       StringBuilder res = new StringBuilder(), stack = new StringBuilder();
+        for (int i = 0; i <= s.length(); i++) {
+            stack.append((char)('1' + i));
+            if (i == s.length() || s.charAt(i) == 'I') {
+                res.append(stack.reverse());
+                stack = new StringBuilder();
+            }
+        }
+        return res.toString();
+    }
+}
+
+
+//Approach -4 ,  BY Backtracking  , T.C - > O(n).
+
+
