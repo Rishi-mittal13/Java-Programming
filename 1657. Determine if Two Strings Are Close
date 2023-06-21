@@ -1,0 +1,24 @@
+//problem - 1657 (leetcode).
+
+//Approach ->  sorting 
+
+class Solution {
+    public boolean closeStrings(String word1, String word2) {
+        int n1 =  word1.length() , n2  =  word2.length();
+        if(n1!=n2) return false;
+        int[] ch1 =  new int[26];
+        int[] ch2 =  new int[26];
+        for(int i = 0 ;i<n1 ; i++){
+            ch1[word1.charAt(i)-'a']++;
+            ch2[word2.charAt(i)-'a']++;
+        }
+        for(int i = 0;i<26 ; i++) {
+            if((ch1[i]==ch2[i]) || (ch1[i]>0 && ch2[i]>0) ) continue;
+            else return false;
+        }
+        Arrays.sort(ch1);
+        Arrays.sort(ch2);
+        for(int i = 0 ; i<26 ; i++) if(ch1[i]!=ch2[i]) return false;
+        return true;
+    }
+}
