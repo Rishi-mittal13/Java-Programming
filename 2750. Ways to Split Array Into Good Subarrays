@@ -1,0 +1,25 @@
+//problem - 2750(leetcode).
+
+//T.C -> O(n) , S.C => O(n).
+
+
+class Solution {
+    public int numberOfGoodSubarraySplits(int[] nums) {
+        List<Integer> lst = new ArrayList<Integer>();
+        long count = 0 ;
+        int curr = 0 ,  n =  nums.length ; 
+        for(int i = 0  ; i<n  ; i++){
+            if(nums[i]==0) curr++;
+            else{
+                curr++;
+                lst.add(curr);
+                curr = 0 ;
+            }
+        }
+        for(int i = 0 ;i<lst.size() ; i++){
+            if(i==0) count = 1;
+            else count = ((count*lst.get(i)%1000000007));
+        }
+        return (int)(count%1000000007);
+    }
+}
