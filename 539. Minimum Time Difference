@@ -1,0 +1,23 @@
+//problem - 539 (leetcode).
+
+//T.C -> O(nlogn).
+class Solution {
+    public int findMinDifference(List<String> timePoints){
+        int  n =  timePoints.size();
+        int[] tm = new int[n];
+        for(int i = 0  ; i<n ; i++) tm[i] = convert(timePoints.get(i));
+        Arrays.sort(tm);
+        int min = tm[n-1] - tm[0];
+        if(min>720)  min =  1440-min;
+        for(int i = 1  ;i<n  ;i++){
+            int t =  tm[i]-tm[i-1];
+            if(t<min) min = t;
+        } 
+        return min;
+    }
+    public static int convert(String s){
+        int total  = 0;
+        total = Integer.parseInt(s.substring(0,2))*60 + Integer.parseInt(s.substring(3)); 
+        return total ;
+    }
+}
