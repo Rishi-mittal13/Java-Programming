@@ -1,0 +1,17 @@
+//problem  - 2706 (leetcode).
+//T.C =>  O(n).
+
+class Solution {
+    public int buyChoco(int[] prices, int money) {
+        int m1 = 101 , m2  = 101 , ind  = 0;
+        for(int i = 0 ; i<prices.length ; i++){
+            if(prices[i]<m1){ m1 = prices[i]; ind  = i ; }
+        }
+        prices[ind] =  101;
+        for(int i = 0 ; i<prices.length ; i++){
+            if(prices[i]<m2){ m2 = prices[i];}
+        }
+        if((m1+m2)>money) return money ;
+        return (money-m1-m2);
+    }
+}
