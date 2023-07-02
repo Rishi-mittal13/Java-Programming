@@ -1,0 +1,36 @@
+//problem -  212(leetcode).
+
+//comments:- not a good approach ,  we use hashtable and backtracking to find all present word in table . 
+class Solution {
+    public List<String> findWords(char[][] board, String[] words) {
+        int r  = board.length  , c = board[0].length , max_len  = 0 ;
+        HashSet<String> hs =  new  HashSet<>();
+        for(int i = 0 ; i<words.length ; i++){
+            hs.add(words[i]);
+            if(words[i].length()>max_len) max_len =  words[i].length();
+        }
+        boolean[][] b =  new boolean[r][c];
+        HashSet<String> res =  new HashSet<>();
+        for(int i  = 0 ; i<r ; i++){
+            for(int j  =  0  ; j<c  ;j++ ){
+            search(board , b ,  i , j ,  0 ,  new StringBuilder() ,max_len , hs, res);
+            }
+        }
+        List<String> ans = new ArrayList<>();
+        ans.addAll(res);
+        return ans;
+    }
+    public static void search(char[][] board , boolean[][] b ,  int i , int j  , int idx , StringBuilder str ,  int ml , HashSet<String> hs , HashSet<String> res ){
+        if(idx>ml) return ;
+        if( i>=board.length || j>=board[0].length || i<0 || j<0 || b[i][j])return ;
+        str.append(board[i][j]);
+        b[i][j] =  true ;
+        if(hs.contains(str.toString())) res.add(str.toString());
+        search(board , b , i+1 , j ,  idx+1 , str , ml , hs, res);
+        search(board , b , i-1 , j ,  idx+1 , str , ml , hs, res);
+        search(board , b , i , j+1 ,  idx+1 , str , ml , hs, res);
+        search(board , b , i , j-1 ,  idx+1 , str , ml , hs, res);
+        b[i][j] =  false;
+        str.setLength(str.length() -1);
+    }
+}
