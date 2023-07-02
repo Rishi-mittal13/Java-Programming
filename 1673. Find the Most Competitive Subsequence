@@ -1,0 +1,23 @@
+//problem -  1673 .
+
+//T.C => O(n) , same as remove k digit problem in leetcode.
+class Solution {
+    public int[] mostCompetitive(int[] nums, int k) {
+        int n =  nums.length , r = nums.length - k ; 
+        Stack<Integer>  stk = new Stack<>();
+        for(int i = 0 ; i<n ; i++){
+            while(!stk.isEmpty() && (nums[i]<stk.peek()) && r>0){
+                stk.pop();
+                r--;
+            }
+            stk.push(nums[i]);
+        }
+        while(r>0) {stk.pop(); r--;}
+        n =  stk.size();
+        int[] ans =  new int[n];
+        for(int i = 0 ; i<n ;i++){
+            ans[i] =  stk.get(i);
+        }
+        return ans;
+    }
+}
