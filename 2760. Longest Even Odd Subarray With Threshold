@@ -1,0 +1,33 @@
+//problem -  2760(leetcode).
+
+//Approach ->  basic bruteforce .
+
+class Solution {
+    public int longestAlternatingSubarray(int[] nums, int threshold) {
+        int i = 0  , n  = nums.length , max = 0 , count = 0  ;
+        boolean flag =  true ;
+        while(i<n){
+            if(flag && nums[i]%2==0 && nums[i]<=threshold){
+                count++;
+                flag =  false;
+                i++;
+            }
+            else if(!flag && ((nums[i]%2)!=(nums[i-1]%2)) && nums[i]<=threshold){
+                i++;
+                count++;
+            }
+            else if(!flag && ((nums[i]%2)==(nums[i-1]%2)) && nums[i]<=threshold){
+                flag = true ;
+                count = 0 ;
+            }
+            else {
+                i++;
+                count = 0 ;
+                flag = true ;
+            }
+            if(count>max) max =  count ;
+        }
+        return max;
+        
+    }
+}
