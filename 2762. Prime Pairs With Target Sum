@@ -1,0 +1,35 @@
+//problem -  2762(leetcode).
+T.C -> O(nlog(logn)) . 
+
+
+class Solution {
+    public List<List<Integer>> findPrimePairs(int n) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> lst =  new ArrayList<>();
+        if(n<2) return ans;
+       boolean[] arr = new boolean[n+1];
+        arr[0] =  true ; arr[1] =  true ;
+       for(int i = 1; i*i <n ; i++){
+           if(arr[i]==false){
+               for(int j = i ; j*i<=n ; j++) arr[j*i] =  true ;
+           }
+       }
+        for(int  i = 0 ; i<=n ; i++) if(arr[i]==false) lst.add(i);
+        HashSet<Integer> hs =  new HashSet<>();
+        int num =  lst.size();
+        for(int i = 0 ; i<num ; i++) hs.add(lst.get(i));
+        for(int i = 0 ; i<=num ;  i++){
+            int req = n- lst.get(i);
+            List<Integer> ls =  new ArrayList<>();
+            if(hs.contains(req) &&  req>=lst.get(i)){
+                ls.add(lst.get(i));
+                ls.add(req);
+                ans.add(ls);
+            }
+            
+        } 
+        return ans;
+        
+        
+    }
+}
