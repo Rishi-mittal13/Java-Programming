@@ -1,5 +1,6 @@
 // BY LINEAR TIME COMPLEXITY AND 0(1) SPACE COMPLEXITY.
 
+//moores Voting Algorithm.
 class Solution {
     public int majorityElement(int[] nums) {
         int m = nums[0];
