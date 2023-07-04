@@ -1,0 +1,17 @@
+//problem -  2295(leetcode).
+
+
+
+class Solution {
+    public int[] arrayChange(int[] nums, int[][] operations) {
+        HashMap<Integer , Integer> hm  = new HashMap<>();
+        int n =  nums.length ;
+        for(int i = 0 ; i<n ; i++) hm.put(nums[i] ,  i );
+        for(int i  = 0 ; i<operations.length ; i++){
+            int ind = hm.get(operations[i][0]);
+            nums[ind] = operations[i][1];
+            hm.put(operations[i][1] , ind);
+        }
+        return nums;
+    }
+}
