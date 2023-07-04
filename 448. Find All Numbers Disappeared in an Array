@@ -1,0 +1,32 @@
+//problem -  448(leetcode).
+
+//T.C -> O(n) ,  S.C = O(n).
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> ans =  new ArrayList<>();
+        int n = nums.length ; 
+        boolean[] arr = new boolean[n];
+        for(int i = 0 ;i<n ; i++) arr[nums[i]-1] =  true ;
+        for(int  i = 0 ; i<n ; i++){
+            if(arr[i]==false) ans.add(i+1);
+        }
+        return ans;
+    }
+}
+
+
+
+//T.C => O(n) ,  S.C -> O(1).
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> ans =  new ArrayList<>();
+        for(int i = 0 ; i<nums.length ; i++){
+            int d = Math.abs(nums[i])-1;
+            if(nums[d]>0) nums[d] = nums[d]*-1;
+        }
+        for(int i = 0 ; i<nums.length ; i++){
+            if(nums[i]>0) ans.add(i+1);
+        }
+        return ans;
+    }
+}
