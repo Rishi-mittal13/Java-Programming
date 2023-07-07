@@ -1,0 +1,34 @@
+//problem - 498(leetcode).
+
+
+//T.C -> O(n^2);
+
+class Solution {
+    public int[] findDiagonalOrder(int[][] mat) {
+        int n = mat.length, m = mat[0].length, k = m+n, ind = 0, row = 0, col = 0;
+        int[] ans =  new int[m*n];
+        for(int i = 0 ; i<k ; i++){
+            if(i%2==0){
+                while(row>=0 && col<m){
+                    ans[ind++] = mat[row][col];
+                    row--;col++;
+                }
+                row++;
+                if(col>=m){
+                    row++;col--;
+                }
+            }
+            else{
+                while(col>=0 && row<n){
+                    ans[ind++] = mat[row][col];
+                    row++;col--;
+                }
+                col++;
+                if(row>=n){
+                    col++;row--;
+                }
+            }
+        }
+        return ans;
+    }
+}
