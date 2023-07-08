@@ -1,0 +1,31 @@
+//problem :-  8(leetcode)
+//T.C ->  O(n) , S.C ->  O(1).
+
+class Solution {
+    public int myAtoi(String s) {
+        //1). checking whitespaces .
+        int n =  s.length() , i = 0 ; 
+        while(i<n && s.charAt(i)==' ') i++;
+        if(i==n) return 0;
+
+        //2).check number contain +ve or -ve sign in string .
+        boolean neg = false , pos =  false;
+        if(s.charAt(i)=='-') { neg =  true ; i++;}
+        else if(s.charAt(i)=='+') { pos =  true ; i++;}
+
+        //3).after that calculate the ans value .
+        long ans = 0 ;
+        while(i<n && (s.charAt(i)>='0' && s.charAt(i)<='9')){
+            ans =  ans*10 + (int)(s.charAt(i)-'0');
+            i++;
+            if(ans>Integer.MAX_VALUE ) break ;
+        }
+        if(neg) ans*=-1;
+
+        //then check wether ans value out of range of Integer or not , if it is
+        //then assign there respective max and min value of ans;
+        if(ans>Integer.MAX_VALUE) ans = Integer.MAX_VALUE;
+        else if(ans<Integer.MIN_VALUE) ans =  Integer.MIN_VALUE;
+        return (int)ans;
+    }
+}
