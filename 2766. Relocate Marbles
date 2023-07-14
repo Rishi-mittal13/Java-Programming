@@ -1,0 +1,18 @@
+//problem -  2766(leetcode).
+
+//Approach ->  By HashMap .
+class Solution {
+    public List<Integer> relocateMarbles(int[] nums, int[] moveFrom, int[] moveTo) {
+        HashMap<Integer , Integer> hm =  new HashMap<>();
+        for(int i  =  0 ; i<nums.length   ;i++){
+            if(!hm.containsKey(nums[i])) hm.put(nums[i],1);
+        }
+        for(int i = 0 ; i < moveFrom.length ; i++){
+            hm.remove(moveFrom[i]);
+            if(!hm.containsKey(moveTo[i])) hm.put(moveTo[i] , 1);       
+        }
+        List<Integer> ans =  new ArrayList<>( hm.keySet());
+        ans.sort(null);
+        return ans;
+    }
+}
