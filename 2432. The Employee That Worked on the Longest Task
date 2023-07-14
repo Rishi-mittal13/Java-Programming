@@ -1,0 +1,20 @@
+//problem -  2432(leetcode).
+//APproach - Basic Brute Force Approach .
+
+
+class Solution {
+    public int hardestWorker(int n, int[][] logs) {
+        int curr = 0  ,  max = 0 ,  maxid = 0 ;
+        for(int i = 0 ; i<logs.length ; i++){
+            if((logs[i][1]-curr)>=max){
+                if(logs[i][1]-curr == max){
+                    if(maxid>logs[i][0]) maxid = logs[i][0];
+                }
+                else{max = logs[i][1]-curr;
+                maxid =  logs[i][0];}
+            }
+            curr = logs[i][1];
+        }
+        return maxid;
+    }
+}
