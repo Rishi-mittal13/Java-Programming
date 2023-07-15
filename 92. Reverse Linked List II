@@ -1,0 +1,54 @@
+//problem - 92(leetcode).
+
+
+//T.C =>  O(n) , S.C => O(1).
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if(right==left || head == null ||  head.next == null) return head;
+        ListNode st = null ,  end =  null , temp = head , h = null;
+        boolean b =  false;
+        for(int i = 1 ; i<left-1 ; i++) temp = temp.next;
+        if(left == 1){
+            b = true ;
+            st =  head ;
+        }
+        else{
+            h = temp ;
+            st =  temp.next ;
+            temp.next = null;
+            temp = st;
+        }
+        for(int i  =  1 ; i<=(right-left) ; i++) temp = temp.next ;
+        if(temp!=null) {
+            end =  temp.next ;
+            temp.next = null;
+        }   
+        ListNode ans = reverse(st);
+        if(b==false) h.next = ans;
+        st.next =  end;
+        if(b==true) return ans ;
+        return head ;
+    }
+    public static ListNode reverse(ListNode head){
+        ListNode prev = null , next =  null;
+        while(head!=null){
+            next =  head.next ;
+            head.next = null;
+            head.next = prev;
+            prev =  head ;
+            head =  next ;
+        }
+        return prev ;
+    }
+}
