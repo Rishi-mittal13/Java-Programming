@@ -1,0 +1,38 @@
+//problem - 224(leetcode).
+
+
+T.C => O(n) ,  S.C =>  O(n) auxillary Space.
+
+
+class Solution {
+    public int calculate(String s) {
+        int sum = 0 , sign = 1 , n =  s.length() , i= 0 ;
+        Stack<Integer> st = new Stack<>();
+        while(i<n){
+            char c =  s.charAt(i);
+            if(c>='0' && c<='9'){
+                int ans = 0 ;
+                while(i<n && s.charAt(i)>='0' && s.charAt(i)<='9'){
+                    int digit =  (int)(s.charAt(i)-'0');
+                    ans = ans*10 +digit;
+                    i++;
+                }
+                sum = sum + (sign*ans);
+                sign = 1;
+                if(i==n) break;
+                c = s.charAt(i);
+            }
+            if(c=='('){
+                st.push(sum);
+                st.push(sign);
+                sign = 1;
+                sum = 0 ;
+            }
+            else if(c==')') sum = sum*st.pop() + st.pop();
+            else if(c=='-') sign = -1;
+            i++;
+        }
+        return sum ;
+    }
+}
+
