@@ -1,0 +1,22 @@
+//problem -  125(leetcode).
+
+
+//T.C => (n) , Two Pointer Approach .
+class Solution {
+    public boolean isPalindrome(String s) {
+        StringBuilder str = new StringBuilder();
+        for(int i = 0 ; i<s.length() ; i++){
+            char c =  s.charAt(i);
+            if(c>='a' && c<='z') str.append(c);
+            else if(c>='A' && c<='Z') str.append((char)(c+32));
+            else if(c>='0' && c<='9') str.append(c);
+        }
+        s = str.toString();
+        System.out.println(s);
+        int n =  s.length();
+        for(int i = 0 ; i<(n/2) ; i++){
+            if(s.charAt(i)!=s.charAt(n-1-i)) return false;
+        }
+        return true ;
+    }
+}
