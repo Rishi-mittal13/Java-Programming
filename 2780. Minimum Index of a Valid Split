@@ -1,0 +1,23 @@
+//problem - 2780(leetcode).
+//T.C => O(n) , using moore's voting Algo .
+class Solution {
+    public int minimumIndex(List<Integer> nums) {
+        int n =  nums.size() , num = nums.get(0) , count = 0 ;
+
+        for(int i = 0 ; i<n ; i++){
+            if(num==nums.get(i)) count++;
+            else count--;
+            if(count==0) {
+                num = nums.get(i);
+                count = 1;
+            }      
+        }
+        count = 0;
+        for(int i = 0 ; i<n; i++) if(num==nums.get(i)) count++;
+        for(int i = 0 ; i<n ; i++){
+            if(num==nums.get(i)) c2++;
+            if((c2*2>(i+1)) && (count-c2)*2>(n-i-1)) return i ;
+        }
+        return -1;
+    }
+}
