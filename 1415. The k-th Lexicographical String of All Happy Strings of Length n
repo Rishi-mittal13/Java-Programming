@@ -1,0 +1,27 @@
+//problem -  1415(leetcode).
+
+
+//Approach ->  Backtracking same as calulation of permutation .
+
+
+class Solution {
+    static String str ;
+    static int c ;
+    public String getHappyString(int n, int k) {
+        str = "";
+        c = 0;
+        solve(n,k,"" , "abc");
+        return str;
+    }
+    public static void solve(int n ,  int k , String ans ,  String s ){
+        if(ans.length()==n){
+            c++;
+            if(c==k) str = ans;
+            return ;
+        }
+        for(int i = 0 ; i<3 ; i++){
+            if(ans.length()>0 && ans.charAt(ans.length()-1)==s.charAt(i)) continue;
+            solve(n , k ,ans+s.charAt(i), s );
+        }
+    }
+}
