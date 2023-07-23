@@ -1,0 +1,18 @@
+//problem - 2789(leetcode).
+
+//Just Traverse From Back , update the result in long arr . 
+
+
+class Solution {
+    public long maxArrayValue(int[] nums) {
+        int n = nums.length ;
+        long[] arr  = new long[n];
+        for(int i = 0 ; i<n ; i++) arr[i] =  (long)nums[i];
+        for(int i = n-1 ; i>0 ; i--){
+            if(arr[i]>=arr[i-1]) arr[i-1] =  arr[i]+arr[i-1];
+        }
+        long max = 0 ;
+        for(long i : arr) if(i>max) max =  i;
+        return max;
+    }
+}
