@@ -1,0 +1,27 @@
+//problem -  2788(leetcode).
+
+//Approach :- Basic Brute Force.
+//Note :- if you use split fxn then : - as split() accepts regex as input parameter , so either have to escape the character ( \character ) or you can use [] to indicate a set of characters to match ("[character]")
+
+class Solution {
+    public List<String> splitWordsBySeparator(List<String> words, char separator) {
+        List<String>  res =  new ArrayList<>();
+        for(int j = 0 ; j<words.size() ; j++){
+            String s = (words.get(j));
+            StringBuilder str = new StringBuilder();
+            for(int i = 0 ; i<s.length() ; i++){
+                if(s.charAt(i)==separator){
+                    String gg = str.toString();
+                    if(!gg.equals(""))  res.add(gg);
+                    str = new StringBuilder();
+                }
+                else{
+                    str.append(s.charAt(i));
+                }
+            }
+            String gg = str.toString();
+                    if(!gg.equals(""))  res.add(gg);
+        }
+        return res;
+    }
+}
