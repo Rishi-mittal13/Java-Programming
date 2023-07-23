@@ -1,0 +1,15 @@
+//problem - 2520(leetcode).
+
+//Approach = Brute - force , t.C => Log10(n).
+
+class Solution {
+    public int countDigits(int num) {
+        int n = num ,  count = 0 ;
+        while(n>0){
+            int div =  n%10;
+            if(num%div==0) count++;
+            n/=10;
+        }
+        return count;
+    }
+}
