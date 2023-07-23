@@ -1,0 +1,31 @@
+//problem-2785(leetcode).
+
+
+//Approach => Just store the character in list and sort them . T.C => (nlog(n))
+class Solution {
+    public String sortVowels(String s) {
+        int n =  s.length() , k = 0 ;
+        ArrayList<Integer> arr =  new ArrayList<>();
+        ArrayList<Character> crr =  new ArrayList<>();
+        for(int i = 0 ; i<n ; i++){
+            char c =  s.charAt(i);
+            if(c=='a' || c=='e'|| c=='i' || c=='o' || c=='u' || c=='A' || c=='E' || c=='I' || c=='O' || c=='U'){
+                crr.add(c);
+                arr.add(i);
+            }
+        }
+       int len =  arr.size();
+        Collections.sort(crr);
+        StringBuilder ans = new StringBuilder();
+        for(int i = 0 ; i<n ; i++){
+            if(k<len && i==arr.get(k)){
+                ans.append(crr.get(k));
+                k++;
+            }
+            else{
+                ans.append(s.charAt(i));
+            }
+        }
+        return ans.toString();
+    }
+}
