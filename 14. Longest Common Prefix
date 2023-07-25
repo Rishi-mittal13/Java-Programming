@@ -1,0 +1,36 @@
+//problem -  14(leetcode).
+
+//Brute-force ,  T.C=> O(n^2).
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        int min = Integer.MAX_VALUE , ind = 0 ;
+        for(String s : strs) if(s.length()<min) min =  s.length();
+        while(ind<min){
+            char c = strs[0].charAt(ind);
+            for(int i = 0 ; i<strs.length ; i++){
+                if(strs[i].charAt(ind)!=c) return strs[i].substring(0,ind);
+            }
+            ind++;
+        }
+        return strs[0].substring(0,ind);
+    }
+}
+
+
+
+
+
+//Approach-2 :- T.C=> O(n^2).
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) return "";
+        String prefix = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            while (strs[i].indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) return "";
+            }
+        }
+        return prefix;
+    }
+}
