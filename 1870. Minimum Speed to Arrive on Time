@@ -1,0 +1,30 @@
+//problem - 1870 (leetcode).
+
+
+//Approach :-  Binary Search(similar problem like book allocation , koko loves eating bananas) , T.C =>  O(nlogn).
+
+class Solution {
+    public int minSpeedOnTime(int[] dist, double hour) {
+        int l = 1 ,  h = 0 , ans = -1 ;
+        for(int i : dist) if(i>h) h = i*100;
+        while(l<=h){
+            int mid  = l + (h-l)/2;
+            if(isPossible(dist,mid , hour)){
+                ans = mid ;
+                h = mid-1;
+            }
+            else l = mid+1;
+        }
+        return ans;
+    }
+    public static boolean isPossible(int[] dist , int mid , double hour){
+        double total = 0 ;
+        int n =  dist.length;
+        for(int i = 0  ; i<n ; i++) {
+            if(i==n-1) total+=((double)dist[i]/mid);
+            else total+=Math.ceil((double)dist[i]/mid);
+            if(total>hour) return false;
+        }   
+        return true ;
+    }
+}
