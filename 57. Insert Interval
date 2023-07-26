@@ -1,0 +1,28 @@
+//problem -  57(leetcode).
+
+//Approach :- just checking each condition making the result . T.C =>  O(n).
+
+
+
+class Solution {
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+
+        List<int[]> lst =  new ArrayList<>();
+        for(int[] intr : intervals){
+            if(intr[1]<newInterval[0]) lst.add(intr);
+            else if(newInterval[1]<intr[0]){
+                lst.add(newInterval.clone());
+                newInterval = intr;
+            }
+            else if(intr[1]>=newInterval[0]){
+                newInterval[0] = Math.min(intr[0] , newInterval[0]);
+                newInterval[1] = Math.max(intr[1] , newInterval[1]);
+            }
+        }
+        lst.add(newInterval);
+        int[][] ans = new int[lst.size()][2];
+        for(int i = 0 ; i<lst.size() ; i++) ans[i] = lst.get(i);
+        return ans;
+
+    }
+}
