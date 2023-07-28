@@ -1,6 +1,6 @@
 //problem -  2141(leetcode).
 
-Approach :- Binary Search same as (book Alloaction , koko loves eating bananas) T.C =>  O(n).
+Approach :- Binary Search same as (book Alloaction , koko loves eating bananas) T.C =>  O(nlogn).
 
 
 class Solution {
