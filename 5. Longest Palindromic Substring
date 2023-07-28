@@ -1,0 +1,25 @@
+//problem-5 (leetcode).
+
+//T.C => O(n^2)., Two Pointer Approach . 
+class Solution {
+    public String longestPalindrome(String s) {
+        int start = 0 , end  = 0 , n = s.length() ;
+        for(int i = 0 ; i<n ; i++){
+            int l = i ;
+            int r = i ;
+            char c = s.charAt(i);
+            while(l>=0 && s.charAt(l)==c) l--;
+            while(r<n && s.charAt(r)==c) r++;
+            while(l>=0 && r<n){
+                if(s.charAt(l)!=s.charAt(r)) break;
+                l--; r++;
+            }
+            l+=1;
+            if(r-l>end-start){
+                start =  l;
+                end =  r;
+            }
+        }
+        return s.substring(start ,  end);
+    }
+}
