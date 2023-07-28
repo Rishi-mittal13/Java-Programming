@@ -1,0 +1,28 @@
+//problem -  2141(leetcode).
+
+Approach :- Binary Search same as (book Alloaction , koko loves eating bananas) T.C =>  O(n).
+
+
+class Solution {
+    public long maxRunTime(int n, int[] batteries) {
+        long s = 0 , e = 0  ,  ans = 0;
+        for(int i : batteries) e+=i;
+        while(s<=e) {
+            long mid = s + (e-s)/2;
+            if(isPossible(n , batteries ,  mid)){
+                ans =  mid ; 
+                s = mid+1;
+            }
+            else e = mid - 1 ;
+        }
+        return ans;
+    }
+    public static boolean isPossible(int n , int[] batteries , long mid){
+        long time = 0 ;
+        for(int i : batteries){
+            if(i<=mid) time+=i;
+            else time+=mid;
+        }
+        return time>=mid*n;
+    }
+}
