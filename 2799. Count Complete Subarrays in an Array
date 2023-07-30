@@ -1,0 +1,33 @@
+//problem -  2799(leetcode).
+
+//Approach :- by using sliding window and hashmap (we can also use hashset ). 
+
+class Solution {
+    public int countCompleteSubarrays(int[] nums) {
+        Map<Integer , Integer> hm =  new HashMap<>();
+        int n = nums.length ,  count = 0  ;
+        for(int i = 0 ; i<n ; i++){
+            if(!hm.containsKey(nums[i])) hm.put(nums[i] , 1);
+            else hm.put(nums[i] , hm.get(nums[i])+1);
+        }
+        int st =  hm.size();
+        for(int i = st ; i<=n; i++){
+            HashMap<Integer ,  Integer> h = new HashMap<>();
+            int s = 0 , e = i;
+            for(int j = 0 ; j<i; j++){
+                if(!h.containsKey(nums[j])) h.put(nums[j] , 1);
+                else h.put(nums[j] , h.get(nums[j])+1);
+            }
+            if(h.size()==st) count++;
+            while(e<n){
+                if(!h.containsKey(nums[e])) h.put(nums[e] ,  1);
+                else h.put(nums[e] , h.get(nums[e]) +1);
+                h.put(nums[s] , h.get(nums[s]) -1);
+                if(h.get(nums[s])==0) h.remove(nums[s]) ;
+                if(h.size()==st) count++;
+                e++;s++;
+            }
+        }
+                   return count ;
+    }
+}
