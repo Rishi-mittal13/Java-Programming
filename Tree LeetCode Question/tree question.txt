@@ -1,0 +1,22 @@
+=> LeetCode - 100 :- Same Tree.
+=> LeetCode - 101 :- Symmetric Tree.
+=> LeetCode - 94  :- Binary Tree Inorder Traversal.
+=> LeetCode - 144 :- Binary Tree PreOrder Traversal.
+=> LeetCode - 145 :- Binary Tree PostOrder Traversal.
+=> LeetCode - 102 :- Binary Tree Level Order Traversal.
+=> LeetCode - 104 :- maximum depth of Binary Tree . 
+=> LeetCode - 199 :- Binary Tree Right Side View.
+=> LeetCode - 107 :- Binary Tree Level Order Traversal 2 .
+=> LeetCode - 951 :- Flip Equivalent Binary Tree .              <----
+=> LeetCode - 112 :- path Sum.
+=> LeetCode - 129 :- Sum Root to leaf Node.
+=> LeetCode - 113 :- path sum 2 .
+=> LeetCode - 236 :- Lowest Common Ancestor in binary tree.
+=> LeetCode - 110 :-  Balanced Binary Tree .
+
+==>  Binary Search Tree 
+
+=> LeetCode - 701 :- 
+=> LeetCode - 450 :- 
+=> LeetCode - 98 :-
+333
