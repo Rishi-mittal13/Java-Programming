@@ -1,0 +1,62 @@
+//Mirror Tree
+
+/*
+ import java.util.*;
+class TreeNode{
+    int val ;
+    TreeNode left ;
+    TreeNode right ;
+    TreeNode(){}
+    TreeNode(int val) { this.val = val; } 
+}
+public class Main{
+    public static void main(String[] args){
+        Scanner sc =  new Scanner(System.in);
+        String input =  sc.nextLine();
+        TreeNode root =  createBinaryTree(input);
+        boolean ans =  mirror(root.left ,  root.right);
+        if(ans) System.out.print("YES");
+        else System.out.print("NO");
+    }
+
+    public static boolean mirror(TreeNode r1 ,  TreeNode r2){
+        if(r1==null && r2==null) return true ;
+        if(r1==null || r2==null) return false ;
+        if(r1.val!=r2.val) return false ;
+        
+        boolean m1 =  mirror(r1.left ,  r2.right);
+        boolean m2 =  mirror(r1.right ,  r2.left);
+        return m1&&m2;
+    }
+
+
+    public static TreeNode createBinaryTree(String input) {
+        String[] values = input.split(" ");
+        int index = 0;
+        if (values.length == 0) return null;
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode root = new TreeNode(Integer.parseInt(values[index++]));
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+            if (index < values.length) {
+                String leftVal = values[index++];
+                if (!leftVal.equals("-1")) {
+                    current.left = new TreeNode(Integer.parseInt(leftVal));
+                    queue.offer(current.left);
+                }
+            }
+
+            if (index < values.length) {
+                String rightVal = values[index++];
+                if (!rightVal.equals("-1")) {
+                    current.right = new TreeNode(Integer.parseInt(rightVal));
+                    queue.offer(current.right);
+                }
+            }
+        }
+
+        return root;
+    }
+}
+ */

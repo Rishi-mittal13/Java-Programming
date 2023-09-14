@@ -1,0 +1,66 @@
+//Root to Leaf - ||
+
+/* 
+import java.util.*;
+class TreeNode{
+    int val;
+    TreeNode left ;
+    TreeNode right;
+    TreeNode(){}
+    TreeNode(int val){ this.val = val; }
+}
+public class Main {
+    static int count ;
+    public static void main (String args[]) {
+        Scanner sc =  new Scanner(System.in);
+        String inp = sc.nextLine();
+        int target= sc.nextInt();
+        TreeNode root =  createBinaryTree(inp);
+        count = 0 ;
+        RTL2(root , target );
+        System.out.print(count);
+    }
+
+    public static void RTL2(TreeNode root ,  int target){
+        if(root==null)  return ;
+        if(target-root.val==0 && root.left==null && root.right ==null) count++;
+        RTL2(root.left , target-root.val);
+        RTL2(root.right , target-root.val);
+    }
+    public static TreeNode createBinaryTree(String input) {
+        String[] values = input.split(" ");
+        int index = 0;
+
+        if (values.length == 0) {
+            return null;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode root = new TreeNode(Integer.parseInt(values[index++]));
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+
+            if (index < values.length) {
+                String leftVal = values[index++];
+                if (!leftVal.equals("-1")) {
+                    current.left = new TreeNode(Integer.parseInt(leftVal));
+                    queue.offer(current.left);
+                }
+            }
+
+            if (index < values.length) {
+                String rightVal = values[index++];
+                if (!rightVal.equals("-1")) {
+                    current.right = new TreeNode(Integer.parseInt(rightVal));
+                    queue.offer(current.right);
+                }
+            }
+        }
+
+        return root;
+    }
+
+}
+*/
