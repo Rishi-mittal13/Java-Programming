@@ -1,0 +1,24 @@
+//problem - 2443(leetcode).
+
+//basic Math Approach , T.C => O(n)
+class Solution {
+    public boolean sumOfNumberAndReverse(int num) {
+        int a  = 0 , b = 0 ;
+        if(num%2==1) { a = num/2 ; b = (num/2 + 1) ; }
+        else { a = num/2 ; b = num/2 ; }
+        while(a>=0){
+            if(isReverse(a , b)) if((a+b)==num) return true ;
+            a--;b++;
+        }
+        return false;
+    }
+    public boolean isReverse(int a , int b){
+        int ans = 0;
+        while(b>0){
+            int v =  b%10 ;
+            ans = ans*10 + v ;
+            b/=10;
+        }
+        return a==ans;
+    }
+}
